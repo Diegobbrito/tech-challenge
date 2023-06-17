@@ -25,7 +25,7 @@ public class ProdutoRepository implements ProdutoReporitoryPort {
 
     @Override
     public void salvar(Produto produto) {
-        final var entity = new ProdutoEntity();
+        final var entity = new ProdutoEntity(produto);
         repository.save(entity);
     }
 }
