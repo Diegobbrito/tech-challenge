@@ -3,6 +3,7 @@ package br.com.fiap.lanchonete.dominio.entidades;
 import br.com.fiap.lanchonete.dominio.enumerator.Categoria;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Produto {
     private Long id;
@@ -11,20 +12,23 @@ public class Produto {
     private BigDecimal valor;
     private Categoria categoria;
     private String imagemUrl;
-    private int quantidade;
 
-    public Produto(Long id, String nome, String descricao, BigDecimal valor, Categoria categoria, String imagemUrl, int quantidade) {
+
+    public Produto(Long id, String nome, String descricao, BigDecimal valor, Categoria categoria, String imagemUrl) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
         this.imagemUrl = imagemUrl;
-        this.quantidade = quantidade;
     }
 
-    public Produto() {
-
+    public Produto(String nome, String descricao, BigDecimal valor, String imagemUrl, Categoria categoria) {
+        this.nome = nome.trim();
+        this.descricao = descricao.trim();
+        this.valor = valor.setScale(2, RoundingMode.HALF_UP);
+        this.categoria = categoria;
+        this.imagemUrl = imagemUrl;
     }
 
     public Long getId() {
@@ -49,9 +53,5 @@ public class Produto {
 
     public String getImagemUrl() {
         return imagemUrl;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
     }
 }

@@ -22,8 +22,8 @@ public class ProdutoService implements ProdutoServicePort {
     }
 
     @Override
-    public void criar(ProdutoRequest produtoRequest) {
-        final var produto = new Produto();
+    public void criar(ProdutoRequest request) {
+        final var produto = new Produto(request.getNome(), request.getDescricao(), request.getValor(), request.getImagemUrl(), request.getCategoria());
         this.reporitory.salvar(produto);
     }
 }

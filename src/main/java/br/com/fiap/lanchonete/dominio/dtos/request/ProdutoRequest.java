@@ -10,4 +10,24 @@ public class ProdutoRequest {
     private BigDecimal valor;
     private Categoria categoria;
     private String imagemUrl;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
 }
