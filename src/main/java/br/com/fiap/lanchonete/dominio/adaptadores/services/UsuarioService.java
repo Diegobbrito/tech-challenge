@@ -22,12 +22,12 @@ public class UsuarioService implements UsuarioServicePort {
 
     @Override
     public List<UsuarioResponse> buscarTodos() {
-        final var produtos = this.reporitory.buscarTodos();
+        final var usuarios = this.reporitory.buscarTodos();
         return null;
     }
 
     @Override
-    public void criar(UsuarioRequest produtoRequest) {
+    public void criar(UsuarioRequest request) {
         final var usuario = new Usuario();
         this.reporitory.salvar(usuario);
     }
