@@ -20,17 +20,17 @@ public class ProdutoController {
         return service.buscarTodos();
     }
 
-    @PostMapping
+    @PostMapping("/produtos")
     public void criar(ProdutoRequest request){
         service.criar(request);
     }
 
-    @PutMapping
+    @PutMapping("/produtos")
     public void editar(){
 
     }
 
-    @DeleteMapping
+    @DeleteMapping("/produtos")
     public void remover(){
 
     }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CategoriaController {
 
-    @GetMapping
+    @GetMapping("/categorias")
     public void categorias(){
 
     }

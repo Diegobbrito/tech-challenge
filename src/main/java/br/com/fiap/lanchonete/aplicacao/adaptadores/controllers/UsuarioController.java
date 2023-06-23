@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UsuarioController {
 
-    @PostMapping
+    @PostMapping("/usuarios")
     public void cadastrar(){
 
     }

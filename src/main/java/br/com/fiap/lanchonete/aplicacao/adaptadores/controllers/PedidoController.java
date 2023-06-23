@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PedidoController {
 
-    @GetMapping
+    @GetMapping("/pedidos")
     public void listarTodos(){
 
     }
