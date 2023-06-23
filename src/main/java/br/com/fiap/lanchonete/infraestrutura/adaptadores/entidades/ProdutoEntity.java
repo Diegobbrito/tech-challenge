@@ -2,6 +2,7 @@ package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
 import br.com.fiap.lanchonete.dominio.entidades.Produto;
 import br.com.fiap.lanchonete.dominio.enumerator.Categoria;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -16,11 +17,14 @@ public class ProdutoEntity {
     private String nome;
     private String descricao;
     private BigDecimal valor;
-    private Categoria categoria;
     private String imagemUrl;
 
+    @JsonIgnore
+    @ManyToOne
+    private CategoriaEntity categoria;
+
     public ProdutoEntity(Produto produto) {
-        final var entity = new ProdutoEntity(
+         new ProdutoEntity(
                 produto.getNome(),
                 produto.getDescricao(),
                 produto.getValor(),
@@ -32,12 +36,14 @@ public class ProdutoEntity {
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
-        this.categoria = categoria;
+        final var categoriaEntity = new CategoriaEntity();
+        categoriaEntity.setId(categoria.getId());
+        this.categoria = categoriaEntity;
         this.imagemUrl = imagemUrl;
 
     }
 
     public Produto toProduto() {
-        return new Produto(this.id, this.nome, this.descricao, this.valor, this.categoria, this.imagemUrl);
+        return new Produto(this.id, this.nome, this.descricao, this.valor, Categoria.from(this.categoria.getId()), this.imagemUrl);
     }
 }

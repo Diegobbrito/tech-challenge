@@ -8,7 +8,8 @@ public class ProdutoRequest {
     private String nome;
     private String descricao;
     private BigDecimal valor;
-    private Categoria categoria;
+
+    private int categoriaId;
     private String imagemUrl;
 
     public String getNome() {
@@ -23,8 +24,8 @@ public class ProdutoRequest {
         return valor;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public int getCategoriaId() {
+        return categoriaId;
     }
 
     public String getImagemUrl() {
