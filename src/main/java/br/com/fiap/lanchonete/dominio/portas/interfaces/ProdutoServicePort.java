@@ -12,4 +12,6 @@ public interface ProdutoServicePort {
     List<ProdutoResponse> buscarPorCategoria(Integer id);
 
     void excluirProduto(Integer id);
+
+    void atualizar(Integer id, ProdutoRequest request);
 }

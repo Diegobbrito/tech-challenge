@@ -13,7 +13,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 public class ProdutoController {
 
-    private ProdutoServicePort service;
+    private final ProdutoServicePort service;
     public ProdutoController(ProdutoServicePort service) {
         this.service = service;
     }
@@ -35,8 +35,9 @@ public class ProdutoController {
     }
 
     @PutMapping("/produtos/{id}")
-    public void editar(@PathVariable Integer id){
-
+    public ResponseEntity<Void> editar(@PathVariable Integer id, @RequestBody ProdutoRequest request){
+        service.atualizar(id, request);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/produtos/{id}")

@@ -52,4 +52,14 @@ public class ProdutoService implements ProdutoServicePort {
         repository.excluir(id);
 
     }
+
+    @Override
+    public void atualizar(Integer id, ProdutoRequest request) {
+        final var produto = this.repository.buscarPorId(id);
+        if(produto.isEmpty()){
+            throw new IllegalArgumentException("Produto não encontrado para atualização");
+        }
+
+        repository.salvar(produto.get().toProduto(request));
+    }
 }

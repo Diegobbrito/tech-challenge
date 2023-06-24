@@ -1,9 +1,9 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
 import br.com.fiap.lanchonete.dominio.entidades.Categoria;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name = "categorias")
 @Getter
 @Setter
+@NoArgsConstructor
 public class CategoriaEntity {
 
     @Id
@@ -23,6 +24,10 @@ public class CategoriaEntity {
 
     @OneToMany(mappedBy = "categoria")
     private List<ProdutoEntity> produtos;
+
+    public CategoriaEntity(int categoriaId) {
+        this.id = categoriaId;
+    }
 
     public Categoria toCategoria() {
         return new Categoria(this.id, this.titulo, this.descricao);
