@@ -1,7 +1,6 @@
 package br.com.fiap.lanchonete.dominio.portas.repositorios;
 
-import br.com.fiap.lanchonete.dominio.entidades.Usuario;
-import br.com.fiap.lanchonete.dominio.enumerator.Categoria;
+import br.com.fiap.lanchonete.dominio.entidades.Categoria;
 
 import java.util.List;
 

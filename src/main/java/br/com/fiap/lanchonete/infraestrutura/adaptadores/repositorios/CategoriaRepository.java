@@ -1,13 +1,12 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.repositorios;
 
-import br.com.fiap.lanchonete.dominio.entidades.Usuario;
-import br.com.fiap.lanchonete.dominio.enumerator.Categoria;
+import br.com.fiap.lanchonete.dominio.entidades.Categoria;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.CategoriaRepositoryPort;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.UsuarioReporitoryPort;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.UsuarioEntity;
+import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.CategoriaEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CategoriaRepository implements CategoriaRepositoryPort {
@@ -19,9 +18,10 @@ public class CategoriaRepository implements CategoriaRepositoryPort {
     }
 
     @Override
-    public List<Categoria> buscarTodos() {
-        final var produtos = repository.findAll();
-        return null;
-    }
+    public List<Categoria> buscarTodas() {
+        final var categoria = repository.findAll();
 
+        return categoria.stream().map(CategoriaEntity::toCategoria).collect(Collectors.toList());
+
+    }
 }
