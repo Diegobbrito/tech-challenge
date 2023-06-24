@@ -1,8 +1,6 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
 import br.com.fiap.lanchonete.dominio.entidades.Usuario;
-import br.com.fiap.lanchonete.dominio.enumerator.Categoria;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -24,5 +22,9 @@ public class UsuarioEntity {
 
 
     public UsuarioEntity(Usuario usuario) {
+    }
+
+    public UsuarioEntity() {
+
     }
 }
