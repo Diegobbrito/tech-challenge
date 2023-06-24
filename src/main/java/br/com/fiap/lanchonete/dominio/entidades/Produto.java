@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.dominio.entidades;
 
-import br.com.fiap.lanchonete.dominio.enumerator.Categoria;
+
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

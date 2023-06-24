@@ -1,7 +1,7 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.repositorios;
 
 import br.com.fiap.lanchonete.dominio.entidades.Produto;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.ProdutoReporitoryPort;
+import br.com.fiap.lanchonete.dominio.portas.repositorios.ProdutoRepositoryPort;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.ProdutoEntity;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ProdutoRepository implements ProdutoReporitoryPort {
+public class ProdutoRepository implements ProdutoRepositoryPort {
 
     private final SpringProdutoRepository repository;
 
