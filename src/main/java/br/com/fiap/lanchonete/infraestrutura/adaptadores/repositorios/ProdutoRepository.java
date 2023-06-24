@@ -6,6 +6,7 @@ import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.ProdutoEntity
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -25,13 +26,18 @@ public class ProdutoRepository implements ProdutoRepositoryPort {
 
     @Override
     public void salvar(Produto produto) {
-        System.out.println(produto.getNome());
-        System.out.println(produto.getValor());
-        System.out.println(produto.getDescricao());
         final var entity = new ProdutoEntity(produto);
-        System.out.println(entity.getNome());
-        System.out.println(entity.getValor());
-        System.out.println(entity.getDescricao());
         repository.save(entity);
+    }
+
+    @Override
+    public List<Produto> buscarPorCategoria(Integer id) {
+        final var produtos = repository.findAllByCategoriaId(id);
+        return produtos.stream().map(ProdutoEntity::toProduto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<ProdutoEntity> buscarPorId(Integer id) {
+        return repository.findById(id);
     }
 }

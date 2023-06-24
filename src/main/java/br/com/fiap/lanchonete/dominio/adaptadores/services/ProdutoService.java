@@ -12,15 +12,15 @@ import java.util.stream.Collectors;
 
 public class ProdutoService implements ProdutoServicePort {
 
-    private final ProdutoRepositoryPort reporitory;
+    private final ProdutoRepositoryPort repository;
 
-    public ProdutoService(ProdutoRepositoryPort reporitory) {
-        this.reporitory = reporitory;
+    public ProdutoService(ProdutoRepositoryPort repository) {
+        this.repository = repository;
     }
 
     @Override
     public List<ProdutoResponse> buscarTodos() {
-        final var produtos = this.reporitory.buscarTodos();
+        final var produtos = this.repository.buscarTodos();
         return produtos.stream().map(Produto::toProdutoResponse).collect(Collectors.toList());
     }
 
@@ -34,6 +34,17 @@ public class ProdutoService implements ProdutoServicePort {
         final var produto = new Produto(request.getNome(), request.getDescricao(), request.getValor(), request.getImagemUrl(), new Categoria(request.getCategoriaId()));
 
 
-        this.reporitory.salvar(produto);
+        this.repository.salvar(produto);
+    }
+
+    @Override
+    public List<ProdutoResponse> buscarPorCategoria(Integer id) {
+        final var produtos = this.repository.buscarPorCategoria(id);
+        return produtos.stream().map(Produto::toProdutoResponse).collect(Collectors.toList());
+    }
+
+    @Override
+    public void excluirProduto(Integer id) {
+        final var produto = this.repository.buscarPorId(id);
     }
 }
