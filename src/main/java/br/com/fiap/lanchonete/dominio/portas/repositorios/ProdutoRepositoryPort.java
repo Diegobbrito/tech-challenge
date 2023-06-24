@@ -13,4 +13,6 @@ public interface ProdutoRepositoryPort {
     List<Produto> buscarPorCategoria(Integer id);
 
     Optional<ProdutoEntity> buscarPorId(Integer id);
+
+    void excluir(Integer id);
 }

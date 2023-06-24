@@ -40,4 +40,9 @@ public class ProdutoRepository implements ProdutoRepositoryPort {
     public Optional<ProdutoEntity> buscarPorId(Integer id) {
         return repository.findById(id);
     }
+
+    @Override
+    public void excluir(Integer id) {
+        repository.deleteById(id);
+    }
 }

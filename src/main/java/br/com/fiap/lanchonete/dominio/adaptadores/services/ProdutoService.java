@@ -46,5 +46,10 @@ public class ProdutoService implements ProdutoServicePort {
     @Override
     public void excluirProduto(Integer id) {
         final var produto = this.repository.buscarPorId(id);
+        if(produto.isEmpty()){
+            throw new IllegalArgumentException("Produto não encontrado para exclusão");
+        }
+        repository.excluir(id);
+
     }
 }
