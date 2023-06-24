@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface SpringProdutoRepository extends JpaRepository<ProdutoEntity, Long> {
+public interface SpringProdutoRepository extends JpaRepository<ProdutoEntity, Integer> {
     Optional<ProdutoEntity> findById(Long id);
 }

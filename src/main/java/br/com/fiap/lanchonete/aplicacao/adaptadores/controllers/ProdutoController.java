@@ -3,9 +3,13 @@ package br.com.fiap.lanchonete.aplicacao.adaptadores.controllers;
 import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
 import br.com.fiap.lanchonete.dominio.dtos.response.ProdutoResponse;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.ProdutoServicePort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 public class ProdutoController {
@@ -15,14 +19,15 @@ public class ProdutoController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<ProdutoResponse> listarPorCategoria(){
-        return service.buscarTodos();
+    @GetMapping("/produtos")
+    public ResponseEntity<List<ProdutoResponse>> listarTodos(){
+        return ResponseEntity.ok(service.buscarTodos());
     }
 
     @PostMapping("/produtos")
-    public void criar(ProdutoRequest request){
+    public ResponseEntity<Void> criar(@RequestBody ProdutoRequest request){
         service.criar(request);
+        return new ResponseEntity(CREATED);
     }
 
     @PutMapping("/produtos")

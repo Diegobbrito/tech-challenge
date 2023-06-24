@@ -16,7 +16,7 @@ import java.util.List;
 public class CategoriaEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String titulo;
     private String descricao;

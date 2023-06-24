@@ -25,7 +25,13 @@ public class ProdutoRepository implements ProdutoRepositoryPort {
 
     @Override
     public void salvar(Produto produto) {
+        System.out.println(produto.getNome());
+        System.out.println(produto.getValor());
+        System.out.println(produto.getDescricao());
         final var entity = new ProdutoEntity(produto);
+        System.out.println(entity.getNome());
+        System.out.println(entity.getValor());
+        System.out.println(entity.getDescricao());
         repository.save(entity);
     }
 }

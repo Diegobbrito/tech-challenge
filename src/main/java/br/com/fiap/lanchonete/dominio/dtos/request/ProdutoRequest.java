@@ -2,12 +2,12 @@ package br.com.fiap.lanchonete.dominio.dtos.request;
 
 import java.math.BigDecimal;
 
+
 public class ProdutoRequest {
     private String nome;
     private String descricao;
     private BigDecimal valor;
-
-    private int categoriaId;
+    private Integer categoriaId;
     private String imagemUrl;
 
     public String getNome() {
