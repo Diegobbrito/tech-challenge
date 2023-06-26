@@ -1,5 +1,5 @@
 # Use uma imagem base do MySQL
-FROM mysql:5.6
+FROM mysql:latest
 
 # Variáveis de ambiente para configurar o banco de dados
 ENV MYSQL_ROOT_PASSWORD root1234
