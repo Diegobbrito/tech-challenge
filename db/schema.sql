@@ -1,10 +1,11 @@
 USE lanchonete;
-CREATE TABLE usuarios (
+CREATE TABLE clientes (
     id INT NOT NULL AUTO_INCREMENT,
     cpf VARCHAR(20),
     nome VARCHAR(200),
     email VARCHAR(200),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE KEY (cpf)
 );
 
 CREATE TABLE produtos (
@@ -29,7 +30,7 @@ SET character_set_connection = utf8;
 SET character_set_results = utf8;
 SET collation_connection = utf8_general_ci;
 
-INSERT INTO usuarios (cpf, nome, email) VALUES ("98765432111", "Diego", 'diego@teste.com');
+#INSERT INTO clientes (cpf, nome, email) VALUES ("98765432111", "Diego", 'diego@teste.com');
 INSERT INTO categorias (titulo, descricao) VALUES ("Lanches", "Lanches são compostos por pão, hamburguer e pode conter outros ingredientes como alface, tomate, queijo, bacon, entre outros");
 INSERT INTO categorias (titulo, descricao) VALUES ("Bebidas", "Bebidas como água, refrigerantes, sucos e cervejas");
 INSERT INTO categorias (titulo, descricao) VALUES ("Acompanhamentos", "Batatas fritas, batatas chips ou dadinhos de tapioca");
