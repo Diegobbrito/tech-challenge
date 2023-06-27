@@ -23,7 +23,7 @@ public class ClienteService implements ClienteServicePort {
 
     @Override
     public void criar(ClienteRequest request) {
-        final var cliente = new Cliente(request.getCpf(), request.getNome(), request.getNome());
+        final var cliente = new Cliente(request.getCpf(), request.getNome(), request.getEmail());
         this.reporitory.salvar(cliente);
     }
 
