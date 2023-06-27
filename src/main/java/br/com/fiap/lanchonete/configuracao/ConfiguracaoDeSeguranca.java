@@ -44,6 +44,7 @@ public class ConfiguracaoDeSeguranca {
                 .requestMatchers(HttpMethod.GET ,"/produtos").permitAll()
                 .requestMatchers(HttpMethod.GET ,"/produtos/**").permitAll()
                 .requestMatchers(HttpMethod.POST ,"/produtos/**").hasAnyRole( "ADMIN")
+                .requestMatchers(HttpMethod.POST ,"/clientes").permitAll()
                 .requestMatchers("/login/**")
                 .anonymous()
                 .anyRequest()
