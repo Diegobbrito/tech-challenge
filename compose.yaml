@@ -1,10 +1,35 @@
+version: '3.3'
 services:
-  mysql:
-    image: 'mysql:latest'
+  lanchonetedb:
+    image: mysql:latest
+    restart: always
     environment:
-      - 'MYSQL_DATABASE=lanchonete'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+      MYSQL_DATABASE: 'lanchonete'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'user'
+      MYSQL_ROOT_PASSWORD: 'root'
     ports:
+      - '3305:3306'
+    expose:
       - '3306'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - lanchonete-data:/db
+    networks:
+      - lanchonete-network
+  lanchoneteapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - lanchonetedb
+    links:
+      - lanchonetedb
+    networks:
+      - lanchonete-network
+networks:
+  lanchonete-network:
+volumes:
+  lanchonete-data:
