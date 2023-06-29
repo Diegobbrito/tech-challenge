@@ -21,7 +21,7 @@ public class BeanConfigaracao {
     }
 
     @Bean
-    ClienteServicePort usuarioService(ClienteRepositoryPort repository){
+    ClienteServicePort clienteService(ClienteRepositoryPort repository){
         return new ClienteService(repository);
     }
 
