@@ -26,10 +26,21 @@ CREATE TABLE categorias (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE usuarios (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(200),
+    senha VARCHAR(200),
+    permissoes VARCHAR(200),
+    PRIMARY KEY (id)
+);
+
 SET character_set_client = utf8;
 SET character_set_connection = utf8;
 SET character_set_results = utf8;
 SET collation_connection = utf8_general_ci;
+
+INSERT INTO usuarios (nome, senha, permissoes) VALUES ("usuario", "$2y$10$apny7Z7eYoQP4MnGzgciEerREBrgAVl1rtD3OoEywjd2XLiHniMaO", "USER");
+INSERT INTO usuarios (nome, senha, permissoes) VALUES ("admin", "$2y$10$AymKRLbdwvPArl8IOIq1k.gmsbN3ev7wGtrx4kpDo1f7Uz2/sSNeS", "ADMIN,USER");
 
 INSERT INTO categorias (titulo, descricao) VALUES ("Lanches", "Lanches são compostos por pão, hamburguer e pode conter outros ingredientes como alface, tomate, queijo, bacon, entre outros");
 INSERT INTO categorias (titulo, descricao) VALUES ("Bebidas", "Bebidas como água, refrigerantes, sucos e cervejas");
