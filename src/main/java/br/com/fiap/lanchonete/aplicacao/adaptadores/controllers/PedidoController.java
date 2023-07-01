@@ -2,9 +2,12 @@ package br.com.fiap.lanchonete.aplicacao.adaptadores.controllers;
 
 import br.com.fiap.lanchonete.dominio.portas.interfaces.PedidoServicePort;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.ProdutoServicePort;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Pedidos", description = "Controle de pedidos")
 @RestController
 public class PedidoController {
 
@@ -13,6 +16,7 @@ public class PedidoController {
         this.service = service;
     }
 
+    @Operation(summary = "Listagem de todos os pedidos do dia")
     @GetMapping("/pedidos")
     public void listarTodos(){
         service.buscarTodos();
