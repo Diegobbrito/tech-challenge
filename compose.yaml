@@ -29,6 +29,7 @@ services:
       - spring.datasource.password=lanchonetepwd
       - spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
       - spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+      - security.enabled=false
     depends_on:
       - lanchonetedb
     links:
