@@ -34,11 +34,9 @@ public class ClienteRepository implements ClienteRepositoryPort {
     @Override
     public Cliente buscarClientePorCpf(String cpf) {
         final var cpfFormatado = cpf.trim().replaceAll("\\.", "").replaceAll("-", "");
-        final var cliente = repository.findByCpf(cpfFormatado);
-        if (cliente.isEmpty()){
-            throw new ClienteInexistenteException("Cliente de cpf " + cpf + " não entrado");
-        }
-
-        return new Cliente(cliente.get());
+        final var cliente = repository
+                .findByCpf(cpfFormatado)
+                .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
+        return new Cliente(cliente);
     }
 }
