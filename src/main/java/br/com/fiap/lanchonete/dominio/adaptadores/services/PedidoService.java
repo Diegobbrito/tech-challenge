@@ -1,17 +1,12 @@
 package br.com.fiap.lanchonete.dominio.adaptadores.services;
-import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
+
+import br.com.fiap.lanchonete.dominio.dtos.request.PedidoRequest;
 import br.com.fiap.lanchonete.dominio.dtos.response.PedidoResponse;
-import br.com.fiap.lanchonete.dominio.dtos.response.ProdutoResponse;
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
-import br.com.fiap.lanchonete.dominio.enumerator.CategoriaEnum;
+import br.com.fiap.lanchonete.dominio.entidades.Pedido;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.PedidoServicePort;
-import br.com.fiap.lanchonete.dominio.portas.interfaces.ProdutoServicePort;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.PedidoRepositoryPort;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.ProdutoRepositoryPort;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PedidoService implements PedidoServicePort {
 
@@ -27,7 +22,8 @@ public class PedidoService implements PedidoServicePort {
     }
 
     @Override
-    public void criar(ProdutoRequest request) {
-
+    public void criar(PedidoRequest request) {
+        final var pedido = new Pedido();
+        repository.criar(pedido);
     }
 }

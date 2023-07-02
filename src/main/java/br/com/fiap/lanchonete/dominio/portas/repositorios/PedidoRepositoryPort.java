@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface PedidoRepositoryPort {
     List<Pedido> buscarTodos();
-    void salvar(Pedido pedido);
+    void criar(Pedido pedido);
 }
