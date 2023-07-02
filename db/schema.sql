@@ -67,4 +67,6 @@ INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES (
 #Sobremesas
 INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES ("Cookie", "Delicioso cookie com gotas de chocolate", 7.90, "https://static.saipos.com/saipos-estatico/img-items/17862/store_item/0305b366a7335d889b3e92c2f15ca2ed.jpeg?d=x250", 4);
 INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES ("Brownie de Nutella e Ninho", "Delicioso brownie coberto com ganache de Nutella e leite Ninho em pó.", 9.90, "https://static.saipos.com/saipos-estatico/img-items/17862/store_item/e57fd6908610d97f0156b3676d67164e.jpeg?d=x250", 4);
-INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES ("Combo MELT + Coca + Fritas", "Pão australiano, hambúrguer Angus de 150g, queijo cheddar cremoso, cebola caramelizada, bacon super crocante e molho barbecue. + Coca Cola Lt 350ml + Porção de fritas crocantes.(120g)", 39.90, "https://static.saipos.com/saipos-estatico/img-items/17862/store_item/0305b366a7335d889b3e92c2f15ca2ed.jpeg?d=x250", 4);
+#Combo
+INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES ("Combo MELT + Coca + Fritas", "Pão australiano, hambúrguer Angus de 150g, queijo cheddar cremoso, cebola caramelizada, bacon super crocante e molho barbecue. + Coca Cola Lt 350ml + Porção de fritas crocantes.(120g)", 39.90, "https://static.ifood-static.com.br/image/upload/t_medium/pratos/3c25c30b-c376-4ccb-99a4-4df645726a84/202208241937_IEC0_i.jpg", 5);
+

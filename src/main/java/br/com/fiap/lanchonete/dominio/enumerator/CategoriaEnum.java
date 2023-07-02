@@ -4,7 +4,8 @@ public enum CategoriaEnum {
     LANCHE(1),
     BEBIDA(2),
     ACOMPANHAMENTO(3),
-    SOBREMESA(4);
+    SOBREMESA(4),
+    COMBO(5);
 
     private int id;
 
