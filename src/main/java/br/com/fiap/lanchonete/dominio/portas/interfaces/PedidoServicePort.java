@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PedidoServicePort {
     List<PedidoResponse> buscarTodos();
-    void criar(PedidoRequest pedido);
+    void criar(PedidoRequest produto);
 }
