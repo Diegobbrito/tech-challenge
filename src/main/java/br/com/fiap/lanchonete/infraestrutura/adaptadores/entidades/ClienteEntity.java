@@ -2,9 +2,13 @@ package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
 import br.com.fiap.lanchonete.dominio.entidades.Cliente;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
+@NoArgsConstructor
 public class ClienteEntity {
 
     @Id
@@ -14,7 +18,8 @@ public class ClienteEntity {
     private String cpf;
     private String email;
 
-
+    @OneToMany(mappedBy = "cliente")
+    private List<PedidoEntity> pedidos;
 
     public ClienteEntity(Cliente cliente) {
         this.cpf = cliente.getCpf();
@@ -22,7 +27,8 @@ public class ClienteEntity {
         this.nome = cliente.getNome();
     }
 
-    public ClienteEntity() {
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getId() {

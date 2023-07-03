@@ -1,18 +1,19 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
 import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
-import br.com.fiap.lanchonete.dominio.entidades.Pedido;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
+import br.com.fiap.lanchonete.dominio.entidades.*;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "pedidos")
 @Getter
 @NoArgsConstructor
 public class PedidoEntity {
@@ -20,37 +21,40 @@ public class PedidoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Nonnull
-    private String nome;
-    @Nonnull
-    private String descricao;
-    @Nonnull
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "pedido_produto",
+            joinColumns = @JoinColumn(name = "pedido.id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
+    private List<ProdutoPedidoEntity> produtos;
+
     private BigDecimal valor;
 
-    private String imagemUrl;
+    @ManyToOne
+    private ClienteEntity cliente;
+    private boolean isCliente;
+    private LocalDateTime data_criacao;
 
     @ManyToOne
-    private CategoriaEntity categoria;
+    private StatusPedidoEntity status;
 
     public PedidoEntity(Pedido pedido) {
-
+        this.isCliente = pedido.isCliente();
+        if(pedido.isCliente()){
+            final var cliente =  new ClienteEntity();
+            cliente.setId(pedido.getCliente().getId());
+            this.cliente = cliente;
+        }
+        this.valor = pedido.getValor();
+        final var status = new StatusPedidoEntity();
+        status.setId(pedido.getStatus().getId());
+        this.status = status;
+        this.data_criacao = LocalDateTime.now();
+        this.produtos = pedido.getProdutos().stream().map(p ->
+             new ProdutoPedidoEntity(this, p.getProduto(), p.getQuantidade())
+        ).collect(Collectors.toList());
     }
 
-    public Pedido toPedido() {
-        return new Pedido();
-    }
-
-    public Produto toProduto(ProdutoRequest request) {
-        if(request.getNome() != null || request.getNome().isBlank())
-            this.nome = request.getNome();
-        if(request.getDescricao() != null || request.getDescricao().isBlank())
-            this.descricao = request.getDescricao();
-        if(request.getValor() != null)
-            this.valor = request.getValor();
-        if(request.getImagemUrl() != null|| request.getImagemUrl().isBlank())
-            this.imagemUrl = request.getImagemUrl();
-
-        this.categoria = new CategoriaEntity(request.getCategoriaId());
-        return new Produto(this.id,this.nome, this.descricao, this.valor, new Categoria(this.categoria), this.imagemUrl);
-    }
 }

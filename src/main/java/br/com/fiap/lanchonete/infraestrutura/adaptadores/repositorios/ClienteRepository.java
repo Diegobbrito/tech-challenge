@@ -39,4 +39,13 @@ public class ClienteRepository implements ClienteRepositoryPort {
                 .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
         return new Cliente(cliente);
     }
+
+    @Override
+    public Cliente buscarClientePorId(Integer id) {
+
+        final var cliente = repository
+                .findById(id)
+                .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
+        return new Cliente(cliente);
+    }
 }

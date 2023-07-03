@@ -45,4 +45,10 @@ public class ProdutoRepository implements ProdutoRepositoryPort {
     public void excluir(Integer id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public List<Produto> buscarTodosPorIds(List<Integer> produtoIds) {
+        final var produtos= repository.findByIdIn(produtoIds);
+        return produtos.stream().map(ProdutoEntity::toProduto).collect(Collectors.toList());
+    }
 }

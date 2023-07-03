@@ -9,4 +9,6 @@ public interface ClienteRepositoryPort {
     void salvar(Cliente produto);
 
     Cliente buscarClientePorCpf(String cpf);
+
+    Cliente buscarClientePorId(Integer id);
 }

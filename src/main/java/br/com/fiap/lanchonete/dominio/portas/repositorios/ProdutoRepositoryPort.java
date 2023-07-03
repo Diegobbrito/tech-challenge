@@ -15,4 +15,6 @@ public interface ProdutoRepositoryPort {
     Optional<ProdutoEntity> buscarPorId(Integer id);
 
     void excluir(Integer id);
+
+    List<Produto> buscarTodosPorIds(List<Integer> produtoIds);
 }

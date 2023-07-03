@@ -22,19 +22,16 @@ public class BeanConfigaracao {
     ProdutoServicePort produtoService(ProdutoRepositoryPort repository){
         return new ProdutoService(repository);
     }
-
     @Bean
     ClienteServicePort clienteService(ClienteRepositoryPort repository){
         return new ClienteService(repository);
     }
-
     @Bean
     CategoriaServicePort categoriaService(CategoriaRepositoryPort repository){
         return new CategoriaService(repository);
     }
-
     @Bean
-    PedidoServicePort pedidoService(PedidoRepositoryPort repository){
-        return new PedidoService(repository);
+    PedidoServicePort pedidoService(PedidoRepositoryPort repository, ClienteRepositoryPort clienteRepository, ProdutoRepositoryPort produtoRepository){
+        return new PedidoService(repository, clienteRepository, produtoRepository);
     }
 }
