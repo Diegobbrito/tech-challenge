@@ -1,9 +1,9 @@
 package br.com.fiap.lanchonete.aplicacao.adaptadores.handler;
 
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.ClienteInexistenteException;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.CpfInvalidoException;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.EmailInvalidoException;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.PedidoInexistenteException;
+import br.com.fiap.lanchonete.dominio.exceptions.ClienteInexistenteException;
+import br.com.fiap.lanchonete.dominio.exceptions.CpfInvalidoException;
+import br.com.fiap.lanchonete.dominio.exceptions.EmailInvalidoException;
+import br.com.fiap.lanchonete.dominio.exceptions.PedidoInexistenteException;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

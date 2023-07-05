@@ -3,7 +3,7 @@ package br.com.fiap.lanchonete.infraestrutura.adaptadores.repositorios;
 import br.com.fiap.lanchonete.dominio.models.Pedido;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.PedidoRepositoryPort;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.PedidoEntity;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.PedidoInexistenteException;
+import br.com.fiap.lanchonete.dominio.exceptions.PedidoInexistenteException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.dominio.valueobject;
 
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.CpfInvalidoException;
+import br.com.fiap.lanchonete.dominio.exceptions.CpfInvalidoException;
 
 import java.util.InputMismatchException;
 

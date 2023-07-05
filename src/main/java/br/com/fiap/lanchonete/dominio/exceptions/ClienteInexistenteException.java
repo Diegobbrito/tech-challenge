@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions;
+package br.com.fiap.lanchonete.dominio.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,11 +1,12 @@
 package br.com.fiap.lanchonete.dominio.enumerator;
 
 public enum StatusEnum {
-    RECEBIDO(1, "RECEBIDO"),
-    PREPARANDO(2, "PREPARANDO"),
-    PRONTO(3, "PRONTO"),
-    FINALIZADO(4, "FINALIZADO"),
-    PAGAMENTOPENDENTE(5, "PAGAMENTOPENDENTE");
+
+    PAGAMENTOPENDENTE(1, "PAGAMENTOPENDENTE"),
+    RECEBIDO(2, "RECEBIDO"),
+    PREPARANDO(3, "PREPARANDO"),
+    PRONTO(4, "PRONTO"),
+    FINALIZADO(5, "FINALIZADO");
 
     private int id;
     private String tipo;

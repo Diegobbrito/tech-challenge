@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.dominio.valueobject;
 
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.EmailInvalidoException;
+import br.com.fiap.lanchonete.dominio.exceptions.EmailInvalidoException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
