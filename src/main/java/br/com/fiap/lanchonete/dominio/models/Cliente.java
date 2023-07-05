@@ -1,27 +1,29 @@
 package br.com.fiap.lanchonete.dominio.models;
 
+import br.com.fiap.lanchonete.dominio.dtos.request.EmailRequest;
+import br.com.fiap.lanchonete.dominio.valueobject.Email;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.ClienteEntity;
 
 public class Cliente {
 
     private int id;
     private String cpf;
-    private String email;
+    private Email email;
     private String nome;
 
-    public Cliente(String cpf, String email, String nome) {
+    public Cliente(String cpf, String nome, EmailRequest email) {
         final String cpfFormatado = formatarCpf(cpf);
         if(cpfFormatado.length() != 11){
             throw new IllegalArgumentException("Cpf inválido");
         }
         this.cpf = cpfFormatado;
-        this.email = email;
+        this.email = new Email(email.getEmail());
         this.nome = nome;
     }
 
     public Cliente(ClienteEntity cliente) {
         this.cpf = cliente.getCpf();
-        this.email = cliente.getEmail();
+        this.email = new Email(cliente.getEmail());
         this.nome = cliente.getNome();
     }
 
@@ -33,7 +35,7 @@ public class Cliente {
         return cpf;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 

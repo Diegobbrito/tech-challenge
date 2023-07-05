@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.br.CPF;
 public class ClienteRequest {
     private String nome;
     @Email
-    private String email;
+    private EmailRequest email;
     @CPF
     private String cpf;
 
@@ -15,7 +15,7 @@ public class ClienteRequest {
         return nome;
     }
 
-    public String getEmail() {
+    public EmailRequest getEmail() {
         return email;
     }
 

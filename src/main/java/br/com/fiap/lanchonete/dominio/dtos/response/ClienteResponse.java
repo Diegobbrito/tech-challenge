@@ -10,7 +10,7 @@ public class ClienteResponse {
     public ClienteResponse(Cliente cliente) {
         this.cpf = cliente.getCpf();
         this.nome = cliente.getNome();
-        this.email = cliente.getEmail();
+        this.email = cliente.getEmail().getValor();
     }
 
     public String getCpf() {
