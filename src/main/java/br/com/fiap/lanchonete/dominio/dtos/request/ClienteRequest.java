@@ -1,14 +1,10 @@
 package br.com.fiap.lanchonete.dominio.dtos.request;
 
 
-import jakarta.validation.constraints.Email;
-import org.hibernate.validator.constraints.br.CPF;
-
 public class ClienteRequest {
     private String nome;
     private EmailRequest email;
-    @CPF
-    private String cpf;
+    private CpfRequest cpf;
 
     public String getNome() {
         return nome;
@@ -18,7 +14,7 @@ public class ClienteRequest {
         return email;
     }
 
-    public String getCpf() {
+    public CpfRequest getCpf() {
         return cpf;
     }
 }

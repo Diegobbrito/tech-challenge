@@ -22,7 +22,7 @@ public class ClienteEntity {
     private List<PedidoEntity> pedidos;
 
     public ClienteEntity(Cliente cliente) {
-        this.cpf = cliente.getCpf();
+        this.cpf = cliente.getCpf().getValor();
         this.email = cliente.getEmail().getValor();
         this.nome = cliente.getNome();
     }

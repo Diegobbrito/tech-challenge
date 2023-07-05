@@ -8,7 +8,7 @@ public class ClienteResponse {
     private String nome;
     private String email;
     public ClienteResponse(Cliente cliente) {
-        this.cpf = cliente.getCpf();
+        this.cpf = cliente.getCpf().getValor();
         this.nome = cliente.getNome();
         this.email = cliente.getEmail().getValor();
     }

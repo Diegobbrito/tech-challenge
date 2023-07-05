@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.dominio.dtos.request;
 
-public class EmailRequest {
+public class CpfRequest {
     private String valor;
 
     public String getValor() {
