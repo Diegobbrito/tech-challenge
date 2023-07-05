@@ -26,7 +26,7 @@ CREATE TABLE categorias (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE status (
+CREATE TABLE status_pedido (
     id INT NOT NULL AUTO_INCREMENT,
     titulo VARCHAR(200) NOT NULL,
     PRIMARY KEY (id)
@@ -96,8 +96,8 @@ INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES (
 #Combo
 INSERT INTO produtos (nome, descricao, valor, imagem_url, categoria_id) VALUES ("Combo MELT + Coca + Fritas", "Pão australiano, hambúrguer Angus de 150g, queijo cheddar cremoso, cebola caramelizada, bacon super crocante e molho barbecue. + Coca Cola Lt 350ml + Porção de fritas crocantes.(120g)", 39.90, "https://static.ifood-static.com.br/image/upload/t_medium/pratos/3c25c30b-c376-4ccb-99a4-4df645726a84/202208241937_IEC0_i.jpg", 5);
 #Status
-INSERT INTO status (titulo) VALUES ("Recebido");
-INSERT INTO status (titulo) VALUES ("Em preparação");
-INSERT INTO status (titulo) VALUES ("Pronto");
-INSERT INTO status (titulo) VALUES ("Finalizado");
-INSERT INTO status (titulo) VALUES ("Pagamento Pendente");
+INSERT INTO status_pedido (titulo) VALUES ("Recebido");
+INSERT INTO status_pedido (titulo) VALUES ("Em preparação");
+INSERT INTO status_pedido (titulo) VALUES ("Pronto");
+INSERT INTO status_pedido (titulo) VALUES ("Finalizado");
+INSERT INTO status_pedido (titulo) VALUES ("Pagamento Pendente");
