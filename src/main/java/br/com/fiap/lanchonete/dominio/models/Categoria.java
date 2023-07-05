@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.dominio.entidades;
+package br.com.fiap.lanchonete.dominio.models;
 
 import br.com.fiap.lanchonete.dominio.dtos.response.CategoriaResponse;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.CategoriaEntity;

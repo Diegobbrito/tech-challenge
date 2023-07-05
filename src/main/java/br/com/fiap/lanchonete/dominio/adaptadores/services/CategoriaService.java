@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.dominio.adaptadores.services;
 import br.com.fiap.lanchonete.dominio.dtos.response.CategoriaResponse;
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
+import br.com.fiap.lanchonete.dominio.models.Categoria;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.CategoriaServicePort;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.CategoriaRepositoryPort;
 

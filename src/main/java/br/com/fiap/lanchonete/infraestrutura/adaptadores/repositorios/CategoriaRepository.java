@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.repositorios;
 
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
+import br.com.fiap.lanchonete.dominio.models.Categoria;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.CategoriaRepositoryPort;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.CategoriaEntity;
 import org.springframework.stereotype.Component;

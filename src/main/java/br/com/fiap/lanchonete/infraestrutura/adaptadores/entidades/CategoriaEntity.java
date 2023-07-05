@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
+import br.com.fiap.lanchonete.dominio.models.Categoria;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
