@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.br.CPF;
 
 public class ClienteRequest {
     private String nome;
-    @Email
     private EmailRequest email;
     @CPF
     private String cpf;
