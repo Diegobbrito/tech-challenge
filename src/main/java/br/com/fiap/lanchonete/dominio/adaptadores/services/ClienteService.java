@@ -1,7 +1,7 @@
 package br.com.fiap.lanchonete.dominio.adaptadores.services;
 import br.com.fiap.lanchonete.dominio.dtos.request.ClienteRequest;
 import br.com.fiap.lanchonete.dominio.dtos.response.ClienteResponse;
-import br.com.fiap.lanchonete.dominio.entidades.Cliente;
+import br.com.fiap.lanchonete.dominio.models.Cliente;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.ClienteServicePort;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.ClienteRepositoryPort;
 

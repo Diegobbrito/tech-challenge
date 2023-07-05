@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.dominio.entidades;
+package br.com.fiap.lanchonete.dominio.models;
 
 import static org.junit.jupiter.api.Assertions.*;
 
