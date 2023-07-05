@@ -19,7 +19,7 @@ public class UsuarioEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
     private String nome;
     private String senha;
     private String permissoes;
