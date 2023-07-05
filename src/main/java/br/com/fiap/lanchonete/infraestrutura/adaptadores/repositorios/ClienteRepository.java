@@ -1,10 +1,9 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.repositorios;
 
-import br.com.fiap.lanchonete.dominio.entidades.Cliente;
+import br.com.fiap.lanchonete.dominio.models.Cliente;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.ClienteRepositoryPort;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.ClienteEntity;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.exceptions.ClienteInexistenteException;
-import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.dominio.dtos.response;
 
-import br.com.fiap.lanchonete.dominio.entidades.Cliente;
+import br.com.fiap.lanchonete.dominio.models.Cliente;
 
 public class ClienteResponse {
 
