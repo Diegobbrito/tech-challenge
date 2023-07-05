@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
+import br.com.fiap.lanchonete.dominio.enumerator.StatusEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,4 +22,9 @@ public class StatusPedidoEntity {
 
     @OneToMany(mappedBy = "status")
     private List<PedidoEntity> pedidos;
+
+    public StatusPedidoEntity(StatusEnum status) {
+        this.id = status.getId();
+        this.titulo = status.getTipo();
+    }
 }

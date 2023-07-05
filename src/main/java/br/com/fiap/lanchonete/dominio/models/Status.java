@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.dominio.entidades;
+package br.com.fiap.lanchonete.dominio.models;
 
 import br.com.fiap.lanchonete.dominio.enumerator.StatusEnum;
 
@@ -8,6 +8,7 @@ public class Status {
 
     public Status(StatusEnum status) {
         this.id = status.getId();
+        this.tipo = status.getTipo();
     }
 
     public Integer getId() {
