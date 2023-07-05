@@ -1,8 +1,9 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
-import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
-import br.com.fiap.lanchonete.dominio.entidades.*;
-import jakarta.annotation.Nonnull;
+import br.com.fiap.lanchonete.dominio.enumerator.StatusEnum;
+import br.com.fiap.lanchonete.dominio.models.Categoria;
+import br.com.fiap.lanchonete.dominio.models.Pedido;
+import br.com.fiap.lanchonete.dominio.models.Produto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,12 +23,7 @@ public class PedidoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "pedido_produto",
-            joinColumns = @JoinColumn(name = "pedido.id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ProdutoPedidoEntity> produtos;
 
     private BigDecimal valor;
@@ -35,12 +31,13 @@ public class PedidoEntity {
     @ManyToOne
     private ClienteEntity cliente;
     private boolean isCliente;
-    private LocalDateTime data_criacao;
+    private LocalDateTime dataCriacao;
 
     @ManyToOne
     private StatusPedidoEntity status;
 
     public PedidoEntity(Pedido pedido) {
+        this.id = pedido.getId();
         this.isCliente = pedido.isCliente();
         if(pedido.isCliente()){
             final var cliente =  new ClienteEntity();
@@ -48,13 +45,18 @@ public class PedidoEntity {
             this.cliente = cliente;
         }
         this.valor = pedido.getValor();
-        final var status = new StatusPedidoEntity();
-        status.setId(pedido.getStatus().getId());
-        this.status = status;
-        this.data_criacao = LocalDateTime.now();
+        this.status = new StatusPedidoEntity(StatusEnum.from(pedido.getStatus().getId()));
+        this.dataCriacao = LocalDateTime.now();
         this.produtos = pedido.getProdutos().stream().map(p ->
              new ProdutoPedidoEntity(this, p.getProduto(), p.getQuantidade())
         ).collect(Collectors.toList());
     }
 
+    public Pedido toPedido() {
+        return new Pedido(this);
+    }
+
+    public boolean isCliente() {
+        return isCliente;
+    }
 }

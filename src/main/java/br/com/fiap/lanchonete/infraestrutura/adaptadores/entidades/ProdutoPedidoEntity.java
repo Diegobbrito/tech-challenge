@@ -1,11 +1,14 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
-import br.com.fiap.lanchonete.dominio.entidades.Pedido;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
+import br.com.fiap.lanchonete.dominio.models.Produto;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "pedido_produto")
+@Getter
+@NoArgsConstructor
 public class ProdutoPedidoEntity {
 
     @Id
@@ -20,7 +23,7 @@ public class ProdutoPedidoEntity {
     @JoinColumn(name = "produto_id")
     private ProdutoEntity produto;
 
-    private Integer quantidade;
+    private int quantidade;
 
     public ProdutoPedidoEntity(PedidoEntity pedido, Produto produto, Integer quantidade) {
         this.pedido = pedido;

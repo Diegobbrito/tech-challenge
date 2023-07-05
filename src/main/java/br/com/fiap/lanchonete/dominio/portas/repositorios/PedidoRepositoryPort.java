@@ -1,13 +1,14 @@
 package br.com.fiap.lanchonete.dominio.portas.repositorios;
 
-import br.com.fiap.lanchonete.dominio.entidades.Pedido;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.ProdutoEntity;
+import br.com.fiap.lanchonete.dominio.enumerator.StatusEnum;
+import br.com.fiap.lanchonete.dominio.models.Pedido;
+import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.PedidoEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface PedidoRepositoryPort {
     List<Pedido> buscarTodos();
-    void criar(Pedido pedido);
+    Pedido salvar(Pedido pedido);
+
+    Pedido buscarPorId(Integer pedidoId);
 }

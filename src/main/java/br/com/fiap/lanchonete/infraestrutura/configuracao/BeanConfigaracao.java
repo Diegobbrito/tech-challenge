@@ -8,10 +8,7 @@ import br.com.fiap.lanchonete.dominio.portas.interfaces.CategoriaServicePort;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.PedidoServicePort;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.ProdutoServicePort;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.ClienteServicePort;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.CategoriaRepositoryPort;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.PedidoRepositoryPort;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.ProdutoRepositoryPort;
-import br.com.fiap.lanchonete.dominio.portas.repositorios.ClienteRepositoryPort;
+import br.com.fiap.lanchonete.dominio.portas.repositorios.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,7 +28,7 @@ public class BeanConfigaracao {
         return new CategoriaService(repository);
     }
     @Bean
-    PedidoServicePort pedidoService(PedidoRepositoryPort repository, ClienteRepositoryPort clienteRepository, ProdutoRepositoryPort produtoRepository){
-        return new PedidoService(repository, clienteRepository, produtoRepository);
+    PedidoServicePort pedidoService(PedidoRepositoryPort repository, ClienteRepositoryPort clienteRepository, ProdutoRepositoryPort produtoRepository, PagamentoDataProviderPort pagamentoDataProvider){
+        return new PedidoService(repository, clienteRepository, produtoRepository, pagamentoDataProvider);
     }
 }

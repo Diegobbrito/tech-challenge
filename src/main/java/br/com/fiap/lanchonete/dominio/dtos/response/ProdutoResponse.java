@@ -1,9 +1,5 @@
 package br.com.fiap.lanchonete.dominio.dtos.response;
 
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
-
-import java.math.BigDecimal;
-
 public class ProdutoResponse {
     private int id;
     private String nome;

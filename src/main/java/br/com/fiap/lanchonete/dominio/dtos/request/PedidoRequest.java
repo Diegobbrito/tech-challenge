@@ -1,14 +1,15 @@
 package br.com.fiap.lanchonete.dominio.dtos.request;
 
+import java.util.List;
 import java.util.Map;
 
 public class PedidoRequest {
-    private Map<Integer, Integer> produtos;
+    private List<ProdutoSelecionadoRequest> produtos;
     private boolean isCliente;
     private Integer clienteId;
 
 
-    public Map<Integer, Integer> getProdutos() {
+    public List<ProdutoSelecionadoRequest> getProdutos() {
         return produtos;
     }
 

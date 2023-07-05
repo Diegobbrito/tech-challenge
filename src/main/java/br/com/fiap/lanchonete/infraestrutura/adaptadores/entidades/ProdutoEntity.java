@@ -1,8 +1,8 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
 import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
+import br.com.fiap.lanchonete.dominio.models.Categoria;
+import br.com.fiap.lanchonete.dominio.models.Produto;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package br.com.fiap.lanchonete.dominio.adaptadores.services;
 import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
 import br.com.fiap.lanchonete.dominio.dtos.response.ProdutoResponse;
-import br.com.fiap.lanchonete.dominio.entidades.Categoria;
-import br.com.fiap.lanchonete.dominio.entidades.Produto;
+import br.com.fiap.lanchonete.dominio.models.Categoria;
+import br.com.fiap.lanchonete.dominio.models.Produto;
 import br.com.fiap.lanchonete.dominio.enumerator.CategoriaEnum;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.ProdutoServicePort;
 import br.com.fiap.lanchonete.dominio.portas.repositorios.ProdutoRepositoryPort;

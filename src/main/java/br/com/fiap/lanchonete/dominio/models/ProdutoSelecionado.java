@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.dominio.entidades;
+package br.com.fiap.lanchonete.dominio.models;
 
 public class ProdutoSelecionado {
     private Produto produto;
