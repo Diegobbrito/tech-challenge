@@ -1,30 +1,20 @@
-# Use a imagem base do OpenJDK com Java 17
 FROM maven:3.8.4-openjdk-17-slim AS build
 
-# Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copie o arquivo pom.xml para o diretório de trabalho
 COPY pom.xml .
 
-# Copie os arquivos de origem para o diretório de trabalho
 COPY src ./src
 
-# Execute o comando de construção (Maven) para gerar o arquivo JAR
 RUN mvn clean -DskipTests
 RUN mvn package -DskipTests
 
-# Use uma nova imagem base com Java 17 para a execução da aplicação
 FROM openjdk:17-jdk
 
-# Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copie o arquivo JAR gerado durante a etapa de construção
 COPY --from=build /app/target/*.jar app.jar
 
-# Expõe a porta que a aplicação vai escutar
 EXPOSE 8080
 
-# Comando para executar a aplicação Spring Boot
 CMD ["java", "-jar", "app.jar"]
