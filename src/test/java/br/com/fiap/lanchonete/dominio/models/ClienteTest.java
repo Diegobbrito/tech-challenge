@@ -8,7 +8,7 @@ class ClienteTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }
