@@ -1,10 +1,42 @@
+version: '3.1'
 services:
-  mysql:
-    image: 'mysql:latest'
+  lanchonetedb:
+    image: "mysql:8.0"
+    restart: always
     environment:
-      - 'MYSQL_DATABASE=lanchonete'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+      MYSQL_DATABASE: 'lanchonete'
+      MYSQL_USER: 'lanchonete'
+      MYSQL_PASSWORD: 'lanchonetepwd'
+      MYSQL_ROOT_PASSWORD: 'root'
     ports:
+      - '3306:3306'
+    expose:
       - '3306'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - lanchonete-data:/db
+    networks:
+      - lanchonete-network
+  lanchoneteapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:mysql://lanchonetedb:3306/lanchonete?allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+      - spring.datasource.username=lanchonete
+      - spring.datasource.password=lanchonetepwd
+      - spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+      - security.enabled=false
+    depends_on:
+      - lanchonetedb
+    links:
+      - lanchonetedb
+    networks:
+      - lanchonete-network
+networks:
+  lanchonete-network:
+volumes:
+  lanchonete-data:
