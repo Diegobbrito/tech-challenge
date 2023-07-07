@@ -31,6 +31,6 @@ public enum StatusEnum {
                 return element;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Status inexistente");
     }
 }
