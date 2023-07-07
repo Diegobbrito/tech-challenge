@@ -5,7 +5,7 @@ Projeto desenvolvido para etapa 1 do tech challenge
 
 ## Como testar a aplicação
 
-Faça download do projeto e na pasta principal rode o comando:
+Faça download do projeto e na pasta principal rode o comando no terminal:
 
 ```bash
   docker-compose up -d
