@@ -25,16 +25,14 @@ public class ProdutoService implements ProdutoServicePort {
     }
 
     @Override
-    public void criar(ProdutoRequest request) {
+    public ProdutoResponse criar(ProdutoRequest request) {
         final var checkCategoria = CategoriaEnum.from(request.getCategoriaId());
         if(checkCategoria == null){
             throw new IllegalArgumentException("Categoria Invalida");
         }
-
         final var produto = new Produto(request.getNome(), request.getDescricao(), request.getValor(), request.getImagemUrl(), new Categoria(request.getCategoriaId()));
-
-
-        this.repository.salvar(produto);
+        final var entity = this.repository.salvar(produto);
+        return Produto.toProdutoResponse(entity);
     }
 
     @Override
@@ -54,12 +52,16 @@ public class ProdutoService implements ProdutoServicePort {
     }
 
     @Override
-    public void atualizar(Integer id, ProdutoRequest request) {
+    public ProdutoResponse atualizar(Integer id, ProdutoRequest request) {
         final var produto = this.repository.buscarPorId(id);
         if(produto.isEmpty()){
             throw new IllegalArgumentException("Produto não encontrado para atualização");
         }
 
-        repository.salvar(produto.get().toProduto(request));
+        final var entity = repository.salvar(produto.get().toProduto(request));
+
+        return Produto.toProdutoResponse(entity);
+
+
     }
 }

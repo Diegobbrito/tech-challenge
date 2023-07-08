@@ -6,6 +6,7 @@ import br.com.fiap.lanchonete.dominio.dtos.request.PedidoStatusRequest;
 import br.com.fiap.lanchonete.dominio.dtos.response.PedidoResponse;
 import br.com.fiap.lanchonete.dominio.portas.interfaces.PedidoServicePort;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class PedidoController {
         this.service = service;
     }
 
-    @Operation(summary = "Listagem de todos os pedidos do dia")
+    @Operation(summary = "Listagem de todos os pedidos")
     @GetMapping("/pedidos")
     public ResponseEntity<List<PedidoResponse>> listarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
@@ -36,13 +37,13 @@ public class PedidoController {
 
     @Operation(summary = "Pagamento do  pedido")
     @PostMapping("/pedidos/{pedidoId}/pagamento")
-    public ResponseEntity<PedidoResponse> pagamento(@PathVariable Integer pedidoId, @RequestBody PagamentoRequest request){
+    public ResponseEntity<PedidoResponse> pagamento(@Parameter(example = "1") @PathVariable Integer pedidoId, @RequestBody PagamentoRequest request){
         return new ResponseEntity<>(service.pagar(pedidoId, request), HttpStatus.CREATED) ;
     }
 
     @Operation(summary = "Atualização do status do  pedido")
     @PatchMapping("/pedidos/{pedidoId}/atualizar")
-    public ResponseEntity<PedidoResponse> atualizar(@PathVariable Integer pedidoId, @RequestBody PedidoStatusRequest request){
+    public ResponseEntity<PedidoResponse> atualizar(@Parameter(example = "1") @PathVariable Integer pedidoId, @RequestBody PedidoStatusRequest request){
         return new ResponseEntity<>(service.atualizar(pedidoId, request), HttpStatus.CREATED) ;
     }
 }

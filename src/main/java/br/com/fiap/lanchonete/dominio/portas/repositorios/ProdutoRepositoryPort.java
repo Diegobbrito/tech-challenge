@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ProdutoRepositoryPort {
     List<Produto> buscarTodos();
-    void salvar(Produto produto);
+    Produto salvar(Produto produto);
 
     List<Produto> buscarPorCategoria(Integer id);
 
