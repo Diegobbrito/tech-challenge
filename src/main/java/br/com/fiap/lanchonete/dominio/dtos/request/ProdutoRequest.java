@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 
 public class ProdutoRequest {
-    @Schema(example = "Hambúrguer")
+    @Schema(example = "Hambúrguer SALAD")
     private String nome;
-    @Schema(example = "Pão de brioche, hambúrguer Angus de 150g e queijo mussarela")
+    @Schema(example = "Pão de brioche, hambúrguer Angus de 150g, alface, tomate e queijo mussarela")
     private String descricao;
     @Schema(example = "29,90")
     private BigDecimal valor;
