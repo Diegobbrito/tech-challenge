@@ -29,7 +29,7 @@ public class Pedido {
     }
 
     public static PedidoResponse toResponse(Pedido pedido) {
-        final var status = new StatusResponse(pedido.getStatus().getId(), pedido.getStatus().getTipo());
+        final var status = new StatusResponse(pedido.getStatus().getTipo());
         return new PedidoResponse(pedido.getId(), formatarParaReal(pedido.getValor()), status);
     }
 
@@ -46,7 +46,7 @@ public class Pedido {
 
     private List<ProdutoSelecionado> getProdutosSelecionados(PedidoRequest request, List<Produto> produtos) {
         Map<Integer, Integer> produtoQuantidade = new HashMap<>();
-        request.getProdutos().stream().forEach(p ->
+        request.getProdutos().forEach(p ->
             produtoQuantidade.put(p.getProdutoId(), p.getQuantidade())
         );
 

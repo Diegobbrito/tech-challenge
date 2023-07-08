@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface ProdutoServicePort {
     List<ProdutoResponse> buscarTodos();
-    void criar(ProdutoRequest produto);
+    ProdutoResponse criar(ProdutoRequest produto);
 
     List<ProdutoResponse> buscarPorCategoria(Integer id);
 
     void excluirProduto(Integer id);
 
-    void atualizar(Integer id, ProdutoRequest request);
+    ProdutoResponse atualizar(Integer id, ProdutoRequest request);
 }

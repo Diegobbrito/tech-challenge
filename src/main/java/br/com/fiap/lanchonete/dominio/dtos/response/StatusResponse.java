@@ -1,16 +1,13 @@
 package br.com.fiap.lanchonete.dominio.dtos.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class StatusResponse {
-    private Integer id;
+    @Schema(example = "AGUARDANDO PAGAMENTO")
     private String descricao;
 
-    public StatusResponse(Integer id, String descricao) {
-        this.id = id;
+    public StatusResponse(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getDescricao() {

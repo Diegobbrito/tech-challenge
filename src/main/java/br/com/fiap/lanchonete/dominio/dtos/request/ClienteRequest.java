@@ -1,7 +1,10 @@
 package br.com.fiap.lanchonete.dominio.dtos.request;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class ClienteRequest {
+    @Schema(example = "Diego")
     private String nome;
     private EmailRequest email;
     private CpfRequest cpf;
