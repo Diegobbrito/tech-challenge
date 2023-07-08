@@ -8,7 +8,7 @@ Projeto desenvolvido para etapa 1 do tech challenge
 Faça download do projeto e na pasta principal rode o comando no terminal:
 
 ```bash
-  docker-compose up -d
+   docker-compose --env-file exemplo.env  up -d
 ```
 No navegador, abra a pagina do Swagger da aplicação:
 http://localhost:8080/swagger-ui/index.html#/
