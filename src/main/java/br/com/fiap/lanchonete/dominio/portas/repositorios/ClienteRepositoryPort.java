@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ClienteRepositoryPort {
     List<Cliente> buscarTodos();
-    void salvar(Cliente produto);
+    Cliente salvar(Cliente produto);
 
     Cliente buscarClientePorCpf(String cpf);
 

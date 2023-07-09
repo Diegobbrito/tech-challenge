@@ -7,7 +7,7 @@ import java.util.List;
 public class PedidoRequest {
     private List<ProdutoSelecionadoRequest> produtos;
     @Schema(example = "true")
-    private boolean isCliente;
+    private boolean cliente;
     @Schema(example = "1")
     private Integer clienteId;
 
@@ -17,7 +17,7 @@ public class PedidoRequest {
     }
 
     public boolean isCliente() {
-        return isCliente;
+        return cliente;
     }
 
     public Integer getClienteId() {

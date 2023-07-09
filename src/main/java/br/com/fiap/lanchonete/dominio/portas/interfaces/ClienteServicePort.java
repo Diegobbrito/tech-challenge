@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ClienteServicePort {
     List<ClienteResponse> buscarTodos();
-    void criar(ClienteRequest produto);
+    ClienteResponse criar(ClienteRequest produto);
 
     ClienteResponse buscarClientePorCpf(String cpf);
 }
