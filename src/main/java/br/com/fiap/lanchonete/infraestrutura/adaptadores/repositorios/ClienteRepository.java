@@ -24,9 +24,10 @@ public class ClienteRepository implements ClienteRepositoryPort {
     }
 
     @Override
-    public void salvar(Cliente cliente) {
+    public Cliente salvar(Cliente cliente) {
         final var entity = new ClienteEntity(cliente);
-        repository.save(entity);
+        final var entitySalva = repository.save(entity);
+        return new Cliente(entitySalva);
     }
 
 

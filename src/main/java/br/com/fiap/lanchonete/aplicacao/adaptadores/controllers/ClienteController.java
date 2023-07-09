@@ -6,6 +6,7 @@ import br.com.fiap.lanchonete.dominio.portas.interfaces.ClienteServicePort;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @Tag(name = "Clientes", description = "Controle de clientes")
@@ -25,7 +26,7 @@ public class ClienteController {
 
     @Operation(summary = "Criação de cliente")
     @PostMapping("/clientes")
-    public void cadastrar(@RequestBody ClienteRequest request){
-        service.criar(request);
+    public ResponseEntity<ClienteResponse> cadastrar(@RequestBody ClienteRequest request){
+        return new ResponseEntity<>(service.criar(request), HttpStatus.CREATED);
     }
 }
