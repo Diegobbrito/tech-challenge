@@ -6,9 +6,9 @@ metadata:
     app: lanchonete
 spec:
   ports:
-    - port: 8080
+    - protocol: TCP
+      port: 8080
       targetPort: 8080
-      nodePort: 30000
+  type: LoadBalancer
   selector:
     app: lanchonete
-  type: NodePort
