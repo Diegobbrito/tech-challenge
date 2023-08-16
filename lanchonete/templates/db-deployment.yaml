@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lanchonetedb
+  labels:
+    app: lanchonetedb
+    tier: database
+spec:
+  selector:
+    matchLabels:
+      app: lanchonetedb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: lanchonetedb
+        tier: database
+    spec:
+      containers:
+        - name:  lanchonetedb
+          image: diegobbrito17/lanchonete-db:1
+          ports:
+            - containerPort: 3306
+              name: lanchonetedb
+          envFrom:
+            - configMapRef:
+                name: db-configmap
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+          volumeMounts:
+            - name: db-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: db-persistent-storage
+          persistentVolumeClaim:
+            claimName: db-pvc

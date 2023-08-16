@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lanchonete
+  labels:
+    app: lanchonete
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lanchonete
+  template:
+    metadata:
+      labels:
+        app: lanchonete
+    spec:
+      containers:
+        - name: lanchonete-container
+          image: diegobbrito17/lanchonete:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: configmap
