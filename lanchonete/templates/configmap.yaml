@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+data:
+  DB_SERVER: "lanchonetedb"
+  DB_DATABASE: "lanchonete"
+  DB_USER: "usuario"
+  DB_PASSWORD: "q1w2e3r4"
+  DB_PORT: "3306"

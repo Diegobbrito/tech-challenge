@@ -62,7 +62,9 @@ public class ConfiguracaoDeSeguranca {
     @ConditionalOnExpression("!${security.enabled}")
     public SecurityFilterChain filterChainDev(HttpSecurity http) throws Exception {
         http.csrf()
-                .disable().authorizeHttpRequests()
+                .and()
+                .cors().disable()
+                .authorizeHttpRequests()
                 .anyRequest().permitAll();
 
         return http.build();
