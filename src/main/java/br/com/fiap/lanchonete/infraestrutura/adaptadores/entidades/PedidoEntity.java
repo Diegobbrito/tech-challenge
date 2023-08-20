@@ -1,9 +1,7 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
 import br.com.fiap.lanchonete.dominio.enumerator.StatusEnum;
-import br.com.fiap.lanchonete.dominio.models.Categoria;
 import br.com.fiap.lanchonete.dominio.models.Pedido;
-import br.com.fiap.lanchonete.dominio.models.Produto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,9 +38,7 @@ public class PedidoEntity {
         this.id = pedido.getId();
         this.isCliente = pedido.isCliente();
         if(pedido.isCliente()){
-            final var cliente =  new ClienteEntity();
-            cliente.setId(pedido.getCliente().getId());
-            this.cliente = cliente;
+            this.cliente = new ClienteEntity(pedido.getCliente());
         }
         this.valor = pedido.getValor();
         this.status = new StatusPedidoEntity(StatusEnum.from(pedido.getStatus().getId()));

@@ -14,4 +14,6 @@ public interface PedidoServicePort {
     PedidoResponse pagar(Integer pedidoId, PagamentoRequest request);
 
     PedidoResponse atualizar(Integer pedidoId, PedidoStatusRequest request);
+
+    PedidoResponse consultarStatusDePagamento();
 }

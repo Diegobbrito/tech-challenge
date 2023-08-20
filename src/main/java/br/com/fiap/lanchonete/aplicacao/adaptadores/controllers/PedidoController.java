@@ -16,6 +16,7 @@ import java.util.List;
 
 @Tag(name = "Pedidos", description = "Controle de pedidos")
 @RestController
+@RequestMapping("/pedidos")
 public class PedidoController {
 
     private final PedidoServicePort service;
@@ -24,25 +25,31 @@ public class PedidoController {
     }
 
     @Operation(summary = "Listagem de todos os pedidos")
-    @GetMapping("/pedidos")
+    @GetMapping
     public ResponseEntity<List<PedidoResponse>> listarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
+    @Operation(summary = "Consulta status de pagamento um pedido")
+    @GetMapping("/{pedidoId}")
+    public ResponseEntity<PedidoResponse> detalheDePagamentoDoPedido(){
+        return ResponseEntity.ok(service.consultarStatusDePagamento());
+    }
+
     @Operation(summary = "Criação de  pedidos")
-    @PostMapping("/pedidos")
+    @PostMapping
     public ResponseEntity<PedidoResponse> criar(@RequestBody PedidoRequest request){
         return new ResponseEntity<>(service.criar(request), HttpStatus.CREATED) ;
     }
 
     @Operation(summary = "Pagamento do  pedido")
-    @PostMapping("/pedidos/{pedidoId}/pagamento")
+    @PostMapping("/{pedidoId}/pagamento")
     public ResponseEntity<PedidoResponse> pagamento(@Parameter(example = "1") @PathVariable Integer pedidoId, @RequestBody PagamentoRequest request){
         return new ResponseEntity<>(service.pagar(pedidoId, request), HttpStatus.CREATED) ;
     }
 
     @Operation(summary = "Atualização do status do  pedido")
-    @PatchMapping("/pedidos/{pedidoId}/atualizar")
+    @PatchMapping("/{pedidoId}/atualizar")
     public ResponseEntity<PedidoResponse> atualizar(@Parameter(example = "1") @PathVariable Integer pedidoId, @RequestBody PedidoStatusRequest request){
         return new ResponseEntity<>(service.atualizar(pedidoId, request), HttpStatus.CREATED) ;
     }

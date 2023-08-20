@@ -77,4 +77,9 @@ public class PedidoService implements PedidoServicePort {
         final var entity = pedidoRepository.salvar(pedido);
         return Pedido.toResponse(entity);
     }
+
+    @Override
+    public PedidoResponse consultarStatusDePagamento() {
+        return null;
+    }
 }

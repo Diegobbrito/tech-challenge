@@ -25,6 +25,7 @@ public class ClienteEntity {
         this.cpf = cliente.getCpf().getValor();
         this.email = cliente.getEmail().getValor();
         this.nome = cliente.getNome();
+        this.id = cliente.getId();
     }
 
     public void setId(Integer id) {
