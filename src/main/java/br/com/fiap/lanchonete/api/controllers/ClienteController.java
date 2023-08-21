@@ -2,8 +2,8 @@ package br.com.fiap.lanchonete.api.controllers;
 
 import br.com.fiap.lanchonete.api.dto.request.ClienteRequest;
 import br.com.fiap.lanchonete.api.dto.response.ClienteResponse;
-import br.com.fiap.lanchonete.usecase.cliente.IBuscarCliente;
-import br.com.fiap.lanchonete.usecase.cliente.ICriarCliente;
+import br.com.fiap.lanchonete.core.usecase.cliente.IBuscarCliente;
+import br.com.fiap.lanchonete.core.usecase.cliente.ICriarCliente;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -2,9 +2,9 @@ package br.com.fiap.lanchonete.api.controllers;
 
 import br.com.fiap.lanchonete.api.dto.request.ProdutoRequest;
 import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
-import br.com.fiap.lanchonete.usecase.produto.IBuscarProduto;
-import br.com.fiap.lanchonete.usecase.produto.ICriarProduto;
-import br.com.fiap.lanchonete.usecase.produto.IGerenciarProduto;
+import br.com.fiap.lanchonete.core.usecase.produto.IBuscarProduto;
+import br.com.fiap.lanchonete.core.usecase.produto.ICriarProduto;
+import br.com.fiap.lanchonete.core.usecase.produto.IGerenciarProduto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

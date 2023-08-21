@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.api.dto.response;
 
-import br.com.fiap.lanchonete.dominio.models.Cliente;
+import br.com.fiap.lanchonete.core.entity.Cliente;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ClienteResponse {
