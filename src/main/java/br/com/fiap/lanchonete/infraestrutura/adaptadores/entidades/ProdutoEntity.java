@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades;
 
-import br.com.fiap.lanchonete.dominio.dtos.request.ProdutoRequest;
+import br.com.fiap.lanchonete.api.dto.request.ProdutoRequest;
 import br.com.fiap.lanchonete.dominio.models.Categoria;
 import br.com.fiap.lanchonete.dominio.models.Produto;
 import jakarta.annotation.Nonnull;
@@ -42,7 +42,7 @@ public class ProdutoEntity {
     }
 
     public Produto toProduto() {
-        return new Produto(this.id, this.nome, this.descricao, this.valor, new Categoria(this.categoria), this.imagemUrl);
+        return new Produto(this.id, this.nome, this.descricao, this.valor, toCategoria(this.categoria), this.imagemUrl);
     }
 
     public Produto toProduto(ProdutoRequest request) {
@@ -54,8 +54,10 @@ public class ProdutoEntity {
             this.valor = request.getValor();
         if(request.getImagemUrl() != null|| request.getImagemUrl().isBlank())
             this.imagemUrl = request.getImagemUrl();
+        return new Produto(this.id,this.nome, this.descricao, this.valor, toCategoria(this.categoria), this.imagemUrl);
+    }
 
-        this.categoria = new CategoriaEntity(request.getCategoriaId());
-        return new Produto(this.id,this.nome, this.descricao, this.valor, new Categoria(this.categoria), this.imagemUrl);
+    public Categoria toCategoria(CategoriaEntity categoria) {
+        return new Categoria(categoria.getId(), categoria.getTitulo(), categoria.getDescricao());
     }
 }

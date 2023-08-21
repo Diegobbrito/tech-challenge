@@ -2,7 +2,7 @@ package br.com.fiap.lanchonete.dominio.models;
 
 
 
-import br.com.fiap.lanchonete.dominio.dtos.response.ProdutoResponse;
+import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

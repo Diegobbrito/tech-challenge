@@ -1,7 +1,7 @@
 package br.com.fiap.lanchonete.dominio.models;
 
-import br.com.fiap.lanchonete.dominio.dtos.request.CpfRequest;
-import br.com.fiap.lanchonete.dominio.dtos.request.EmailRequest;
+import br.com.fiap.lanchonete.api.dto.request.CpfRequest;
+import br.com.fiap.lanchonete.api.dto.request.EmailRequest;
 import br.com.fiap.lanchonete.dominio.valueobject.Cpf;
 import br.com.fiap.lanchonete.dominio.valueobject.Email;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.ClienteEntity;

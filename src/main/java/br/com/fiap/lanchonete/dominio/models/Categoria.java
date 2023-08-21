@@ -1,7 +1,6 @@
 package br.com.fiap.lanchonete.dominio.models;
 
-import br.com.fiap.lanchonete.dominio.dtos.response.CategoriaResponse;
-import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.CategoriaEntity;
+import br.com.fiap.lanchonete.api.dto.response.CategoriaResponse;
 
 public class Categoria {
     private int id;
@@ -12,16 +11,6 @@ public class Categoria {
         this.id = id;
         this.tipo = tipo;
         this.descricao = descricao;
-    }
-
-    public Categoria(CategoriaEntity categoria) {
-        this.id = categoria.getId();
-        this.tipo = categoria.getTitulo();
-        this.descricao = categoria.getDescricao();
-    }
-
-    public Categoria(int categoriaId) {
-        this.id = categoriaId;
     }
 
     public static CategoriaResponse toCategoriaResponse(Categoria categoria){

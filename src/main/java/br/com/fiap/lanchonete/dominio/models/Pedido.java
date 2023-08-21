@@ -1,9 +1,9 @@
 package br.com.fiap.lanchonete.dominio.models;
 
 
-import br.com.fiap.lanchonete.dominio.dtos.request.PedidoRequest;
-import br.com.fiap.lanchonete.dominio.dtos.response.PedidoResponse;
-import br.com.fiap.lanchonete.dominio.dtos.response.StatusResponse;
+import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
+import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
+import br.com.fiap.lanchonete.api.dto.response.StatusResponse;
 import br.com.fiap.lanchonete.dominio.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.infraestrutura.adaptadores.entidades.PedidoEntity;
 
