@@ -20,7 +20,8 @@ public class BuscarClienteUseCase implements IBuscarCliente {
 
     @Override
     public ClienteResponse buscarClientePorCpf(String cpf) {
-        final var cliente = this.reporitory.buscarClientePorCpf(cpf);
+        final var cpfFormatado = cpf.trim().replaceAll("\\.", "").replaceAll("-", "");
+        final var cliente = this.reporitory.buscarClientePorCpf(cpfFormatado);
 
         return new ClienteResponse(cliente);
     }

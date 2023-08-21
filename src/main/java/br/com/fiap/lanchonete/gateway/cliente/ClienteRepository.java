@@ -32,9 +32,9 @@ public class ClienteRepository implements IClienteRepository {
 
     @Override
     public Cliente buscarClientePorCpf(String cpf) {
-        final var cpfFormatado = cpf.trim().replaceAll("\\.", "").replaceAll("-", "");
+
         final var cliente = repository
-                .findByCpf(cpfFormatado)
+                .findByCpf(cpf)
                 .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
         return new Cliente(cliente);
     }
