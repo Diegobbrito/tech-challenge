@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.gateway.usuario;
+package br.com.fiap.lanchonete.gateway.repository.usuario;
 
 import br.com.fiap.lanchonete.gateway.repository.IUsuarioRepository;
 import org.springframework.stereotype.Component;

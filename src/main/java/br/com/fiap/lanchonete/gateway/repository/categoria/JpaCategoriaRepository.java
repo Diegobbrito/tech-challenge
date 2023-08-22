@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.gateway.categoria;
+package br.com.fiap.lanchonete.gateway.repository.categoria;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

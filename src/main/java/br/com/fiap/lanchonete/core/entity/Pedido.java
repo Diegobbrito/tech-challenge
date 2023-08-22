@@ -5,7 +5,7 @@ import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.api.dto.response.StatusResponse;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
-import br.com.fiap.lanchonete.gateway.pedido.PedidoEntity;
+import br.com.fiap.lanchonete.gateway.repository.pedido.PedidoEntity;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

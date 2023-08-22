@@ -1,7 +1,7 @@
-package br.com.fiap.lanchonete.gateway.categoria;
+package br.com.fiap.lanchonete.gateway.repository.categoria;
 
 import br.com.fiap.lanchonete.core.entity.Categoria;
-import br.com.fiap.lanchonete.gateway.produto.ProdutoEntity;
+import br.com.fiap.lanchonete.gateway.repository.produto.ProdutoEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

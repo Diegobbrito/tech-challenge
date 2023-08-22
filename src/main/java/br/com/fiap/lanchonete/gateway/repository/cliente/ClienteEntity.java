@@ -1,7 +1,7 @@
-package br.com.fiap.lanchonete.gateway.cliente;
+package br.com.fiap.lanchonete.gateway.repository.cliente;
 
 import br.com.fiap.lanchonete.core.entity.Cliente;
-import br.com.fiap.lanchonete.gateway.pedido.PedidoEntity;
+import br.com.fiap.lanchonete.gateway.repository.pedido.PedidoEntity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 

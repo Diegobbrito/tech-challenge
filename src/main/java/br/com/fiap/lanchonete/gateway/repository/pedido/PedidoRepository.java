@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.gateway.pedido;
+package br.com.fiap.lanchonete.gateway.repository.pedido;
 
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.entity.Pedido;

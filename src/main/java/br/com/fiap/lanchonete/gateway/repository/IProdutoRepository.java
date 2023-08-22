@@ -1,7 +1,7 @@
 package br.com.fiap.lanchonete.gateway.repository;
 
 import br.com.fiap.lanchonete.core.entity.Produto;
-import br.com.fiap.lanchonete.gateway.produto.ProdutoEntity;
+import br.com.fiap.lanchonete.gateway.repository.produto.ProdutoEntity;
 
 import java.util.List;
 import java.util.Optional;

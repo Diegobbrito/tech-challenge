@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.gateway.cliente;
+package br.com.fiap.lanchonete.gateway.repository.cliente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

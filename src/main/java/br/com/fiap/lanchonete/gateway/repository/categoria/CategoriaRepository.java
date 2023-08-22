@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.gateway.categoria;
+package br.com.fiap.lanchonete.gateway.repository.categoria;
 
 import br.com.fiap.lanchonete.core.entity.Categoria;
 import br.com.fiap.lanchonete.gateway.repository.ICategoriaRepository;

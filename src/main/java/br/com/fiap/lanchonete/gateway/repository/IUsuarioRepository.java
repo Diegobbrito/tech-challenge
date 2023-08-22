@@ -1,6 +1,6 @@
 package br.com.fiap.lanchonete.gateway.repository;
 
-import br.com.fiap.lanchonete.gateway.usuario.UsuarioEntity;
+import br.com.fiap.lanchonete.gateway.repository.usuario.UsuarioEntity;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package br.com.fiap.lanchonete.gateway.produto;
+package br.com.fiap.lanchonete.gateway.repository.produto;
 
 import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;

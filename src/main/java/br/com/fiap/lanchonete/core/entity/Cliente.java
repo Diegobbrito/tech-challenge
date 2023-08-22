@@ -4,7 +4,7 @@ import br.com.fiap.lanchonete.api.dto.request.CpfRequest;
 import br.com.fiap.lanchonete.api.dto.request.EmailRequest;
 import br.com.fiap.lanchonete.core.valueobject.Cpf;
 import br.com.fiap.lanchonete.core.valueobject.Email;
-import br.com.fiap.lanchonete.gateway.cliente.ClienteEntity;
+import br.com.fiap.lanchonete.gateway.repository.cliente.ClienteEntity;
 
 public class Cliente {
 
