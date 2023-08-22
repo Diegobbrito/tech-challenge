@@ -1,7 +1,5 @@
 package br.com.fiap.lanchonete.core.entity;
 
-import br.com.fiap.lanchonete.api.dto.request.CpfRequest;
-import br.com.fiap.lanchonete.api.dto.request.EmailRequest;
 import br.com.fiap.lanchonete.core.valueobject.Cpf;
 import br.com.fiap.lanchonete.core.valueobject.Email;
 import br.com.fiap.lanchonete.gateway.repository.cliente.ClienteEntity;
@@ -13,10 +11,9 @@ public class Cliente {
     private Email email;
     private String nome;
 
-    public Cliente(CpfRequest cpf, String nome, EmailRequest email) {
-
-        this.cpf = new Cpf(cpf.getValor());
-        this.email = new Email(email.getValor());
+    public Cliente(String cpf, String nome, String email) {
+        this.cpf = new Cpf(cpf);
+        this.email = new Email(email);
         this.nome = nome;
     }
 

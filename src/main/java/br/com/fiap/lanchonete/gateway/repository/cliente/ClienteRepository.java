@@ -32,7 +32,6 @@ public class ClienteRepository implements IClienteRepository {
 
     @Override
     public Cliente buscarClientePorCpf(String cpf) {
-
         final var cliente = repository
                 .findByCpf(cpf)
                 .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));

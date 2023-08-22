@@ -6,18 +6,20 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class ClienteRequest {
     @Schema(example = "Diego")
     private String nome;
-    private EmailRequest email;
-    private CpfRequest cpf;
+    @Schema(example = "diego@test.com")
+    private String email;
+    @Schema(example = "055.069.020-42")
+    private String cpf;
 
     public String getNome() {
         return nome;
     }
 
-    public EmailRequest getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public CpfRequest getCpf() {
+    public String getCpf() {
         return cpf;
     }
 }

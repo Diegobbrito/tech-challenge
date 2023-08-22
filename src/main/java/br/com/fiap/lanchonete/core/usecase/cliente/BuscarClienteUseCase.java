@@ -1,4 +1,6 @@
 package br.com.fiap.lanchonete.core.usecase.cliente;
+
+import br.com.fiap.lanchonete.api.adapter.ClienteAdapter;
 import br.com.fiap.lanchonete.api.dto.response.ClienteResponse;
 import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 
@@ -6,23 +8,23 @@ import java.util.List;
 
 public class BuscarClienteUseCase implements IBuscarCliente {
 
-    private final IClienteRepository reporitory;
+    private final IClienteRepository repository;
 
-    public BuscarClienteUseCase(IClienteRepository reporitory) {
-        this.reporitory = reporitory;
+    public BuscarClienteUseCase(IClienteRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public List<ClienteResponse> buscarTodos() {
-        final var clientes = this.reporitory.buscarTodos();
+        final var clientes = this.repository.buscarTodos();
         return null;
     }
 
     @Override
     public ClienteResponse buscarClientePorCpf(String cpf) {
         final var cpfFormatado = cpf.trim().replaceAll("\\.", "").replaceAll("-", "");
-        final var cliente = this.reporitory.buscarClientePorCpf(cpfFormatado);
+        final var cliente = this.repository.buscarClientePorCpf(cpfFormatado);
 
-        return new ClienteResponse(cliente);
+        return ClienteAdapter.toResponse(cliente);
     }
 }

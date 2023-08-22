@@ -1,6 +1,5 @@
 package br.com.fiap.lanchonete.api.dto.response;
 
-import br.com.fiap.lanchonete.core.entity.Cliente;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ClienteResponse {
@@ -12,11 +11,12 @@ public class ClienteResponse {
     private String nome;
     @Schema(example = "diego@teste.com")
     private String email;
-    public ClienteResponse(Cliente cliente) {
-        this.id = cliente.getId();
-        this.cpf = cliente.getCpf().getValor();
-        this.nome = cliente.getNome();
-        this.email = cliente.getEmail().getValor();
+
+    public ClienteResponse(int id, String cpf, String nome, String email) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
     }
 
     public int getId() {

@@ -6,21 +6,14 @@ import java.util.List;
 
 public class PedidoRequest {
     private List<ProdutoSelecionadoRequest> produtos;
-    @Schema(example = "true")
-    private boolean cliente;
     @Schema(example = "1")
-    private Integer clienteId;
-
+    private String cpf;
 
     public List<ProdutoSelecionadoRequest> getProdutos() {
         return produtos;
     }
 
-    public boolean isCliente() {
-        return cliente;
-    }
-
-    public Integer getClienteId() {
-        return clienteId;
+    public String getCpf() {
+        return cpf;
     }
 }

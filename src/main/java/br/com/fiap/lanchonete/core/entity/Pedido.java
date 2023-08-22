@@ -18,11 +18,12 @@ public class Pedido {
     private List<ProdutoSelecionado> produtos;
     private BigDecimal valor;
     private Cliente cliente;
-    private boolean isCliente;
+    private boolean isCliente = false;
     private Status status;
     public Pedido(PedidoRequest request, Cliente cliente, List<Produto> produtos, Status status) {
         this.cliente = cliente;
-        this.isCliente = request.isCliente();
+        if(cliente != null)
+            this.isCliente = true;
         this.valor = BigDecimal.ONE;
         this.produtos = getProdutosSelecionados(request, produtos);
         this.status = status;
