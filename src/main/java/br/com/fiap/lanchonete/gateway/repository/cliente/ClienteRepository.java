@@ -24,9 +24,9 @@ public class ClienteRepository implements IClienteRepository {
 
     @Override
     public Cliente salvar(Cliente cliente) {
-        final var entity = new ClienteEntity(cliente);
-        final var entitySalva = repository.save(entity);
-        return new Cliente(entitySalva);
+        final var clienteEntity = new ClienteEntity(cliente);
+        final var entity = repository.save(clienteEntity);
+        return new Cliente(entity.getCpf(), entity.getNome(), entity.getEmail());
     }
 
 
@@ -35,7 +35,7 @@ public class ClienteRepository implements IClienteRepository {
         final var cliente = repository
                 .findByCpf(cpf)
                 .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
-        return new Cliente(cliente);
+        return new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
     }
 
     @Override
@@ -44,6 +44,6 @@ public class ClienteRepository implements IClienteRepository {
         final var cliente = repository
                 .findById(id)
                 .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
-        return new Cliente(cliente);
+        return new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
     }
 }
