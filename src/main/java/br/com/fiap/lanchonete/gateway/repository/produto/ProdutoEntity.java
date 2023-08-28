@@ -29,7 +29,7 @@ public class ProdutoEntity {
 
     private String imagemUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private CategoriaEntity categoria;
 
     public ProdutoEntity(Produto produto) {
