@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class PagamentoDataProvider implements IPagamentoDataProvider {
 
-    private final SpringPagamentoDataProviderImp dataProvider;
+    private final MercadoLivrePagamentoDataProvider dataProvider;
 
-    public PagamentoDataProvider(SpringPagamentoDataProviderImp repository) {
+    public PagamentoDataProvider(MercadoLivrePagamentoDataProvider repository) {
         this.dataProvider = repository;
     }
 
