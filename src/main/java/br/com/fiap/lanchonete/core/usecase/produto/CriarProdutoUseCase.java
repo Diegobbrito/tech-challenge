@@ -1,5 +1,6 @@
 package br.com.fiap.lanchonete.core.usecase.produto;
 
+import br.com.fiap.lanchonete.api.adapter.ProdutoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.ProdutoRequest;
 import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
 import br.com.fiap.lanchonete.core.enumerator.CategoriaEnum;
@@ -21,8 +22,9 @@ public class CriarProdutoUseCase implements ICriarProduto {
         if(checkCategoria == null){
             throw new IllegalArgumentException("Categoria Invalida");
         }
-        final var produto = new Produto(request.getNome(), request.getDescricao(), request.getValor(), request.getImagemUrl(), new Categoria(request.getCategoriaId(), null,null));
+        final var categoria = new Categoria(request.getCategoriaId());
+        final var produto = new Produto(request.getNome(), request.getDescricao(), request.getValor(), categoria, request.getImagemUrl());
         final var entity = this.repository.salvar(produto);
-        return Produto.toProdutoResponse(entity);
+        return ProdutoAdapter.toResponse(entity);
     }
 }

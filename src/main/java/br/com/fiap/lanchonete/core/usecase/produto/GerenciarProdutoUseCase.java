@@ -1,7 +1,8 @@
 package br.com.fiap.lanchonete.core.usecase.produto;
+
+import br.com.fiap.lanchonete.api.adapter.ProdutoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.ProdutoRequest;
 import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
-import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
 
 public class GerenciarProdutoUseCase implements IGerenciarProduto {
@@ -19,9 +20,9 @@ public class GerenciarProdutoUseCase implements IGerenciarProduto {
             throw new IllegalArgumentException("Produto não encontrado para atualização");
         }
 
-        final var entity = repository.salvar(produto.get().toProduto(request));
+        final var entity = repository.salvar(ProdutoAdapter.toProduto(produto.get()));
 
-        return Produto.toProdutoResponse(entity);
+        return ProdutoAdapter.toResponse(entity);
     }
 
     @Override
@@ -31,6 +32,5 @@ public class GerenciarProdutoUseCase implements IGerenciarProduto {
             throw new IllegalArgumentException("Produto não encontrado para exclusão");
         }
         repository.excluir(id);
-
     }
 }

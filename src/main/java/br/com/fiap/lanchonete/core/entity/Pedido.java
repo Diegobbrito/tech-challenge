@@ -1,6 +1,7 @@
 package br.com.fiap.lanchonete.core.entity;
 
 
+import br.com.fiap.lanchonete.api.adapter.ProdutoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.api.dto.response.StatusResponse;
@@ -41,7 +42,7 @@ public class Pedido {
         this.isCliente = pedido.isCliente();
         final var produtos = pedido.getProdutos();
         this.produtos = produtos.stream().map(p ->
-            new ProdutoSelecionado(p.getProduto().toProduto(), p.getQuantidade())
+            new ProdutoSelecionado(ProdutoAdapter.toProduto(p.getProduto()), p.getQuantidade())
         ).collect(Collectors.toList());
     }
 

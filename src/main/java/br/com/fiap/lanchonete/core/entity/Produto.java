@@ -12,13 +12,16 @@ public class Produto {
     private String imagemUrl;
 
 
-    public Produto(Integer id, String nome, String descricao, BigDecimal valor, Categoria categoria, String imagemUrl) {
-        this.id = id;
+    public Produto( String nome, String descricao, BigDecimal valor, Categoria categoria, String imagemUrl) {
         this.nome = nome.trim();
         this.descricao = descricao.trim();
         this.valor = valor.setScale(2, RoundingMode.HALF_UP);
         this.categoria = categoria;
         this.imagemUrl = imagemUrl;
+    }
+
+    public void setId(Integer id){
+        this.id = getId();
     }
 
     public Integer getId() {

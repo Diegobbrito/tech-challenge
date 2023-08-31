@@ -5,13 +5,9 @@ public class Categoria {
     private String tipo;
     private String descricao;
 
-    public Categoria(int id, String tipo, String descricao) {
+    public Categoria(int id) {
         this.id = id;
-        this.tipo = tipo;
-        this.descricao = descricao;
     }
-
-
 
     public int getId() {
         return id;
@@ -23,5 +19,13 @@ public class Categoria {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

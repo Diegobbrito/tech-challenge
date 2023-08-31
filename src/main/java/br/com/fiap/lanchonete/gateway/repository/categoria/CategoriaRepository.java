@@ -1,5 +1,6 @@
 package br.com.fiap.lanchonete.gateway.repository.categoria;
 
+import br.com.fiap.lanchonete.api.adapter.CategoriaAdapter;
 import br.com.fiap.lanchonete.core.entity.Categoria;
 import br.com.fiap.lanchonete.gateway.repository.ICategoriaRepository;
 import org.springframework.stereotype.Component;
@@ -18,9 +19,7 @@ public class CategoriaRepository implements ICategoriaRepository {
 
     @Override
     public List<Categoria> buscarTodas() {
-        final var categoria = repository.findAll();
-
-        return categoria.stream().map(CategoriaEntity::toCategoria).collect(Collectors.toList());
-
+        final var categorias = repository.findAll();
+        return categorias.stream().map(CategoriaAdapter::toCategoria).collect(Collectors.toList());
     }
 }
