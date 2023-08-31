@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class CategoriaEntity {
     private String descricao;
 
     @OneToMany(mappedBy = "categoria")
-    private List<ProdutoEntity> produtos;
+    private List<ProdutoEntity> produtos = new ArrayList<>();
 
     public CategoriaEntity(int categoriaId) {
         this.id = categoriaId;

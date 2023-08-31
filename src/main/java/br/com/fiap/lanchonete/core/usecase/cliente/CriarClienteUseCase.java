@@ -9,13 +9,13 @@ public class CriarClienteUseCase implements ICriarCliente {
 
     private final IClienteRepository repository;
 
-    public CriarClienteUseCase(IClienteRepository reporitory) {
-        this.repository = reporitory;
+    public CriarClienteUseCase(IClienteRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public ClienteResponse criar(ClienteRequest request) {
         final var cliente = new Cliente(request.getCpf(), request.getNome(), request.getEmail());
-        return ClienteAdapter.toResponse(this.repository.salvar(cliente));
+        return ClienteAdapter.toResponse(repository.salvar(cliente));
     }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,16 +24,16 @@ public class PedidoEntity {
     private Integer id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<ProdutoPedidoEntity> produtos;
+    private List<ProdutoPedidoEntity> produtos = new ArrayList<>();;
 
     private BigDecimal valor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private ClienteEntity cliente;
     private boolean isCliente;
     private LocalDateTime dataCriacao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private StatusPedidoEntity status;
 
     public PedidoEntity(Pedido pedido) {

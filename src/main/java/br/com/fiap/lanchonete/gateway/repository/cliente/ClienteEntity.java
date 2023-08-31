@@ -5,6 +5,7 @@ import br.com.fiap.lanchonete.gateway.repository.pedido.PedidoEntity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class ClienteEntity {
     private String email;
 
     @OneToMany(mappedBy = "cliente")
-    private List<PedidoEntity> pedidos;
+    private List<PedidoEntity> pedidos = new ArrayList<>();;
 
     public ClienteEntity(Cliente cliente) {
         this.cpf = cliente.getCpf().getValor();
