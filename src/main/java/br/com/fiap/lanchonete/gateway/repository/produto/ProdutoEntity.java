@@ -33,8 +33,7 @@ public class ProdutoEntity {
     private CategoriaEntity categoria;
 
     public ProdutoEntity(Produto produto) {
-        if(produto.getId() != null)
-            this.id = produto.getId();
+        this.id = produto.getId();
         this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
         this.valor = produto.getValor();

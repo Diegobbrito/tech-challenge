@@ -4,7 +4,7 @@ services:
     image: "mysql:8.0"
     restart: always
     environment:
-      MYSQL_DATABASE: 'lanchonete'
+      MYSQL_DATABASE: '${DB_DATABASE}'
       MYSQL_USER: '${DB_USER}'
       MYSQL_PASSWORD: '${DB_PASSWORD}'
       MYSQL_ROOT_PASSWORD: '${DB_PASSWORD_ROOT}'
@@ -22,9 +22,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8080:8080
+      - 8081:8081
     environment:
-      - spring.datasource.url=jdbc:mysql://${DB_DATABASE}:${DB_PORT}/lanchonete?allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+      - spring.datasource.url=jdbc:mysql://lanchonetedb:${DB_PORT}/${DB_DATABASE}?allowPublicKeyRetrieval=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
       - spring.datasource.username=${DB_USER}
       - spring.datasource.password=${DB_PASSWORD}
     depends_on:

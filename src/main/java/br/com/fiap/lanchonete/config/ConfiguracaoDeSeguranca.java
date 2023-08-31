@@ -1,7 +1,6 @@
 package br.com.fiap.lanchonete.config;
 
 import br.com.fiap.lanchonete.core.usecase.UsuarioService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@Log4j2
 public class ConfiguracaoDeSeguranca {
 
     private final UsuarioService service;
@@ -39,12 +37,13 @@ public class ConfiguracaoDeSeguranca {
         http.csrf()
                 .disable().authorizeHttpRequests()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
-                .requestMatchers(HttpMethod.PUT).hasRole( "ADMIN")
+                .requestMatchers(HttpMethod.PUT).hasAnyRole( "ADMIN", "USER")
                 .requestMatchers(HttpMethod.DELETE).hasRole( "ADMIN")
                 .requestMatchers("/categorias").permitAll()
                 .requestMatchers(HttpMethod.GET ,"/produtos").permitAll()
+                .requestMatchers(HttpMethod.POST ,"/produtos").permitAll()
                 .requestMatchers(HttpMethod.GET ,"/produtos/**").permitAll()
-                .requestMatchers(HttpMethod.POST ,"/produtos/**").hasAnyRole( "ADMIN")
+                .requestMatchers(HttpMethod.POST ,"/produtos/**").hasAnyRole( "ADMIN", "USER")
                 .requestMatchers(HttpMethod.POST ,"/clientes").permitAll()
                 .and()
                 .httpBasic()

@@ -1,14 +1,7 @@
 package br.com.fiap.lanchonete.core.entity;
 
-
-
-import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 
 public class Produto {
     private Integer id;
@@ -21,14 +14,6 @@ public class Produto {
 
     public Produto(Integer id, String nome, String descricao, BigDecimal valor, Categoria categoria, String imagemUrl) {
         this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.valor = valor;
-        this.categoria = categoria;
-        this.imagemUrl = imagemUrl;
-    }
-
-    public Produto(String nome, String descricao, BigDecimal valor, String imagemUrl, Categoria categoria) {
         this.nome = nome.trim();
         this.descricao = descricao.trim();
         this.valor = valor.setScale(2, RoundingMode.HALF_UP);
@@ -60,12 +45,4 @@ public class Produto {
         return imagemUrl;
     }
 
-    public static ProdutoResponse toProdutoResponse(Produto produto) {
-        final var valorDoProduto = formatarParaReal(produto.getValor());
-        return new ProdutoResponse(produto.getId(),  produto.getNome(), produto.getDescricao(), valorDoProduto , produto.getImagemUrl());
-    }
-
-    private static String formatarParaReal(BigDecimal valor){
-        return "R$" + new DecimalFormat("#,###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR"))).format(valor);
-    }
 }

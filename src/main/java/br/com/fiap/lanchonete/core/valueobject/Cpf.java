@@ -8,14 +8,14 @@ public class Cpf {
     private String valor;
 
     public Cpf(String valor) {
-        final String cpfFormatado = formatarCpf(valor);
-        if(!validaCpf(cpfFormatado)){
+        final String cpf = obterNumerosDoCpf(valor);
+        if(!validaCpf(cpf)){
             throw new CpfInvalidoException("Cpf inválido");
         }
-        this.valor = cpfFormatado;
+        this.valor = cpf;
     }
 
-    private String formatarCpf(String cpf) {
+    private String obterNumerosDoCpf(String cpf) {
         return cpf.trim().replaceAll("\\.", "").replaceAll("-", "");
     }
 
@@ -30,8 +30,7 @@ public class Cpf {
             sm = 0;
             peso = 10;
             for (i=0; i<9; i++) {
-
-                num = (int)(cpf.charAt(i) - 48);
+                num = cpf.charAt(i) - 48;
                 sm = sm + (num * peso);
                 peso = peso - 1;
             }
@@ -44,7 +43,7 @@ public class Cpf {
             sm = 0;
             peso = 11;
             for(i=0; i<10; i++) {
-                num = (int)(cpf.charAt(i) - 48);
+                num = cpf.charAt(i) - 48;
                 sm = sm + (num * peso);
                 peso = peso - 1;
             }
@@ -54,9 +53,7 @@ public class Cpf {
                 dig11 = '0';
             else dig11 = (char)(r + 48);
 
-            if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10)))
-                return true ;
-            return false ;
+            return (dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10));
         } catch (InputMismatchException erro) {
             return false ;
         }

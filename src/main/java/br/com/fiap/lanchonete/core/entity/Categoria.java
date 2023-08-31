@@ -1,7 +1,5 @@
 package br.com.fiap.lanchonete.core.entity;
 
-import br.com.fiap.lanchonete.api.dto.response.CategoriaResponse;
-
 public class Categoria {
     private int id;
     private String tipo;
@@ -13,9 +11,7 @@ public class Categoria {
         this.descricao = descricao;
     }
 
-    public static CategoriaResponse toCategoriaResponse(Categoria categoria){
-        return new CategoriaResponse(categoria.getId(), categoria.getTipo(), categoria.getDescricao());
-    }
+
 
     public int getId() {
         return id;
