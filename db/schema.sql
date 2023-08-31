@@ -4,7 +4,7 @@ CREATE TABLE clientes (
     cpf VARCHAR(20),
     nome VARCHAR(200),
     email VARCHAR(200),
-    PRIMARY KEY (id),
+    PRIMARY KEY (cpf),
     UNIQUE KEY (cpf),
     UNIQUE KEY (email)
 );
