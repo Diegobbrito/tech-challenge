@@ -1,5 +1,6 @@
 package br.com.fiap.lanchonete.gateway.repository.pedido;
 
+import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
@@ -25,14 +26,13 @@ public class PedidoRepository implements IPedidoRepository {
                 new StatusPedidoEntity(StatusEnum.PRONTO),
                 new StatusPedidoEntity(StatusEnum.PREPARANDO),
                 new StatusPedidoEntity(StatusEnum.RECEBIDO)));
-        return pedidos.stream().map(PedidoEntity::toPedido).collect(Collectors.toList());
+        return pedidos.stream().map(PedidoAdapter::toPedido).collect(Collectors.toList());
     }
 
     @Override
     public Pedido salvar(Pedido pedido) {
-        final var entity = new PedidoEntity(pedido);
-        final var pedidoCriado = repository.save(entity);
-        return new Pedido(pedidoCriado);
+        final var pedidoCriado = repository.save(new PedidoEntity(pedido));
+        return PedidoAdapter.toPedido(pedidoCriado);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PedidoRepository implements IPedidoRepository {
             throw new PedidoInexistenteException("Pedido não encontrado");
         }
 
-        return new Pedido(pedido.get());
+        return PedidoAdapter.toPedido(pedido.get());
     }
 
 }

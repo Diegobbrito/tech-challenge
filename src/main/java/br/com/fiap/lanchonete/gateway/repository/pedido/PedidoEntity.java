@@ -24,7 +24,7 @@ public class PedidoEntity {
     private Integer id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<ProdutoPedidoEntity> produtos = new ArrayList<>();;
+    private List<ProdutoPedidoEntity> produtos = new ArrayList<>();
 
     private BigDecimal valor;
 
@@ -50,11 +50,4 @@ public class PedidoEntity {
         ).collect(Collectors.toList());
     }
 
-    public Pedido toPedido() {
-        return new Pedido(this);
-    }
-
-    public boolean isCliente() {
-        return isCliente;
-    }
 }

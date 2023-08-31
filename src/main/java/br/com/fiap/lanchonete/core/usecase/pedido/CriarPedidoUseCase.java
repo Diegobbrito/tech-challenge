@@ -1,12 +1,13 @@
 package br.com.fiap.lanchonete.core.usecase.pedido;
 
+import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
 import br.com.fiap.lanchonete.api.dto.request.ProdutoSelecionadoRequest;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
-import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.entity.Cliente;
 import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.core.entity.Status;
+import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
@@ -38,9 +39,10 @@ public class CriarPedidoUseCase implements ICriarPedido {
             final var cpfFormatado = request.getCpf().trim().replaceAll("\\.", "").replaceAll("-", "");
             cliente = this.clienteRepository.buscarClientePorCpf(cpfFormatado);
         }
-        pedido = new Pedido(request, cliente, produtos, status);
+        pedido = PedidoAdapter.toPedido(request, cliente, produtos, status);
 
         final var entity = pedidoRepository.salvar(pedido);
-        return Pedido.toResponse(entity);
+
+        return PedidoAdapter.toResponse(entity);
     }
 }
