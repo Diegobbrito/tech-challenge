@@ -16,17 +16,17 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfigaracao {
 
     @Bean
-    IBuscarCategoria buscarCategoriaUseCase(ICategoriaRepository repository){
+    IBuscarCategoria buscarCategoria(ICategoriaRepository repository){
         return new BuscarCategoriaUseCase(repository);
     }
 
     @Bean
-    IBuscarCliente buscarClienteUseCase(IClienteRepository repository){
+    IBuscarCliente buscarCliente(IClienteRepository repository){
         return new BuscarClienteUseCase(repository);
     }
 
     @Bean
-    ICriarCliente criarClienteUseCase(IClienteRepository repository){
+    ICriarCliente criarCliente(IClienteRepository repository){
         return new CriarClienteUseCase(repository);
     }
 
@@ -46,7 +46,7 @@ public class BeanConfigaracao {
     }
 
     @Bean
-    IBuscarProduto buscarProdutoUseCase(IProdutoRepository repository){
+    IBuscarProduto buscarProduto(IProdutoRepository repository){
         return new BuscarProdutoUseCase(repository);
     }
 
