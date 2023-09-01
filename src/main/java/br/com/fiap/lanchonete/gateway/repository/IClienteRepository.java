@@ -9,6 +9,4 @@ public interface IClienteRepository {
     Cliente salvar(Cliente produto);
 
     Cliente buscarClientePorCpf(String cpf);
-
-    Cliente buscarClientePorId(Integer id);
 }
