@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface JpaPedidoRepository extends JpaRepository<PedidoEntity, Integer> {
 
-    List<PedidoEntity> findByStatusIn(List<StatusPedidoEntity> ids);
+    List<PedidoEntity> findByStatusInOrderByDataCriacaoAsc(List<StatusPedidoEntity> status);
+
+    List<PedidoEntity> findAllByStatusInOrderByDataCriacao(List<StatusPedidoEntity> status);
 
 }

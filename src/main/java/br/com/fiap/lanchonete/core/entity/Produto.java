@@ -21,7 +21,7 @@ public class Produto {
     }
 
     public void setId(Integer id){
-        this.id = getId();
+        this.id = id;
     }
 
     public Integer getId() {

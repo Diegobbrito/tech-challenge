@@ -28,12 +28,12 @@ public class PedidoEntity {
 
     private BigDecimal valor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private ClienteEntity cliente;
     private boolean isCliente;
     private LocalDateTime dataCriacao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private StatusPedidoEntity status;
 
     public PedidoEntity(Pedido pedido) {

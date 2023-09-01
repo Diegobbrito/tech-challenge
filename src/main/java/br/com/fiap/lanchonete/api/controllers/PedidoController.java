@@ -30,7 +30,7 @@ public class PedidoController {
         this.gerenciarPedidoUseCase = gerenciarPedidoUseCase;
     }
 
-    @Operation(summary = "Listagem de todos os pedidos")
+    @Operation(summary = "Listagem de todos os pedidos prontos, em preparação e recebidos.")
     @GetMapping
     public ResponseEntity<List<PedidoResponse>> listarTodos(){
         return ResponseEntity.ok(buscarPedidoUseCase.buscarTodos());

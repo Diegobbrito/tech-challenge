@@ -1,5 +1,6 @@
 package br.com.fiap.lanchonete.gateway.repository.produto;
 
+import br.com.fiap.lanchonete.api.adapter.ProdutoAdapter;
 import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
 import org.springframework.stereotype.Component;
@@ -20,19 +21,20 @@ public class ProdutoRepository implements IProdutoRepository {
     @Override
     public List<Produto> buscarTodos() {
         final var produtos = repository.findAll();
-        return produtos.stream().map(ProdutoEntity::toProduto).collect(Collectors.toList());
+        return produtos.stream().map(ProdutoAdapter::toProduto).collect(Collectors.toList());
     }
 
     @Override
     public Produto salvar(Produto produto) {
         final var entity = new ProdutoEntity(produto);
-        return repository.save(entity).toProduto();
+        final var produtoSalvo = repository.save(entity);
+        return ProdutoAdapter.toProduto(produtoSalvo);
     }
 
     @Override
     public List<Produto> buscarPorCategoria(Integer id) {
         final var produtos = repository.findAllByCategoriaId(id);
-        return produtos.stream().map(ProdutoEntity::toProduto).collect(Collectors.toList());
+        return produtos.stream().map(ProdutoAdapter::toProduto).collect(Collectors.toList());
     }
 
     @Override
@@ -48,6 +50,6 @@ public class ProdutoRepository implements IProdutoRepository {
     @Override
     public List<Produto> buscarTodosPorIds(List<Integer> produtoIds) {
         final var produtos= repository.findByIdIn(produtoIds);
-        return produtos.stream().map(ProdutoEntity::toProduto).collect(Collectors.toList());
+        return produtos.stream().map(ProdutoAdapter::toProduto).collect(Collectors.toList());
     }
 }

@@ -22,7 +22,7 @@ public class PedidoRepository implements IPedidoRepository {
     @Override
     public List<Pedido> buscarTodos() {
         final var pedidos = repository.findAll();
-        repository.findByStatusIn(List.of(
+        repository.findAllByStatusInOrderByDataCriacao(List.of(
                 new StatusPedidoEntity(StatusEnum.PRONTO),
                 new StatusPedidoEntity(StatusEnum.PREPARANDO),
                 new StatusPedidoEntity(StatusEnum.RECEBIDO)));
