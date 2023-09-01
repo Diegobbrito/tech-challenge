@@ -1,10 +1,10 @@
 package br.com.fiap.lanchonete.core.usecase.pedido;
 
+import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.PagamentoRequest;
 import br.com.fiap.lanchonete.api.dto.request.PedidoStatusRequest;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
-import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.gateway.repository.IPagamentoDataProvider;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 
@@ -28,7 +28,7 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
         }
 
         final var entity = pedidoRepository.salvar(pedido);
-        return Pedido.toResponse(entity);
+        return PedidoAdapter.toResponse(entity);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
         pedido.setStatus(StatusEnum.from(request.getStatusId()));
         final var entity = pedidoRepository.salvar(pedido);
-        return Pedido.toResponse(entity);
+        return PedidoAdapter.toResponse(entity);
     }
 
     @Override
