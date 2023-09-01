@@ -24,10 +24,10 @@ public class ClienteEntity {
     private List<PedidoEntity> pedidos = new ArrayList<>();;
 
     public ClienteEntity(Cliente cliente) {
+        this.id = cliente.getId();
         this.cpf = cliente.getCpf().getValor();
         this.email = cliente.getEmail().getValor();
         this.nome = cliente.getNome();
-        this.id = cliente.getId();
     }
 
     public void setId(Integer id) {

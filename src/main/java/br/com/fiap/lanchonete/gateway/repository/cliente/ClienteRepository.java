@@ -1,5 +1,6 @@
 package br.com.fiap.lanchonete.gateway.repository.cliente;
 
+import br.com.fiap.lanchonete.api.adapter.ClienteAdapter;
 import br.com.fiap.lanchonete.core.entity.Cliente;
 import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 import br.com.fiap.lanchonete.core.exception.ClienteInexistenteException;
@@ -26,7 +27,7 @@ public class ClienteRepository implements IClienteRepository {
     public Cliente salvar(Cliente cliente) {
         final var clienteEntity = new ClienteEntity(cliente);
         final var entity = repository.save(clienteEntity);
-        return new Cliente(entity.getCpf(), entity.getNome(), entity.getEmail());
+        return ClienteAdapter.toCliente(entity);
     }
 
 
@@ -35,15 +36,6 @@ public class ClienteRepository implements IClienteRepository {
         final var cliente = repository
                 .findByCpf(cpf)
                 .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
-        return new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
-    }
-
-    @Override
-    public Cliente buscarClientePorId(Integer id) {
-
-        final var cliente = repository
-                .findById(id)
-                .orElseThrow(() -> new ClienteInexistenteException("Cliente não entrado"));
-        return new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
+        return ClienteAdapter.toCliente(cliente);
     }
 }

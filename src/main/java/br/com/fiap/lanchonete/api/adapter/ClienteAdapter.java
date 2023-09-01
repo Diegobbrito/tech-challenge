@@ -13,7 +13,9 @@ public class ClienteAdapter {
                 cliente.getEmail().getValor());
     }
 
-    public static Cliente toCliente(ClienteEntity cliente){
-        return new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
+    public static Cliente toCliente(ClienteEntity clienteEntity){
+        final var cliente = new Cliente(clienteEntity.getCpf(), clienteEntity.getNome(), clienteEntity.getEmail());
+        cliente.setId(clienteEntity.getId());
+        return cliente;
     }
 }

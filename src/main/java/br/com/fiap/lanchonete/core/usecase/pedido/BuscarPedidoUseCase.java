@@ -1,7 +1,7 @@
 package br.com.fiap.lanchonete.core.usecase.pedido;
 
+import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
-import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 
 import java.util.List;
@@ -19,6 +19,6 @@ public class BuscarPedidoUseCase implements IBuscarPedido {
     @Override
     public List<PedidoResponse> buscarTodos() {
         final var pedidos = this.pedidoRepository.buscarTodos();
-        return pedidos.stream().map(Pedido::toResponse).collect(Collectors.toList());
+        return pedidos.stream().map(PedidoAdapter::toResponse).collect(Collectors.toList());
     }
 }
