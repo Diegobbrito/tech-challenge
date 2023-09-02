@@ -1,15 +1,16 @@
 package br.com.fiap.lanchonete.gateway.repository.pedido;
 
-import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.produto.ProdutoEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "pedido_produto")
-@Getter
+@Data
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ProdutoPedidoEntity {
 
     @Id
@@ -24,11 +25,11 @@ public class ProdutoPedidoEntity {
     @JoinColumn(name = "produto_id")
     private ProdutoEntity produto;
 
-    private int quantidade;
+    private Integer quantidade;
 
-    public ProdutoPedidoEntity(PedidoEntity pedido, Produto produto, Integer quantidade) {
+    public ProdutoPedidoEntity(PedidoEntity pedido, ProdutoEntity produto, Integer quantidade) {
         this.pedido = pedido;
-        this.produto= new ProdutoEntity(produto);
+        this.produto = produto;
         this.quantidade = quantidade;
     }
 }

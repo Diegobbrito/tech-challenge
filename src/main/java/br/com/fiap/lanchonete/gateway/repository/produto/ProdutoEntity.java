@@ -2,32 +2,29 @@ package br.com.fiap.lanchonete.gateway.repository.produto;
 
 import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.categoria.CategoriaEntity;
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "produtos")
-@Getter
+@Data
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ProdutoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Nonnull
     private String nome;
-    @Nonnull
     private String descricao;
-    @Nonnull
     private BigDecimal valor;
-
     private String imagemUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private CategoriaEntity categoria;
 
     public ProdutoEntity(Produto produto) {

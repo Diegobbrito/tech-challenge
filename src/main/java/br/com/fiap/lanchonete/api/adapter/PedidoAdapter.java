@@ -52,4 +52,8 @@ public class PedidoAdapter {
     private static String formatarParaReal(BigDecimal valor){
         return "R$" + new DecimalFormat("#,###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR"))).format(valor);
     }
+
+    public static PedidoEntity toUpdate(Pedido pedido) {
+        return new PedidoEntity(pedido);
+    }
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public interface IPedidoRepository {
     List<Pedido> buscarTodos();
     Pedido salvar(Pedido pedido);
-
+    Pedido atualizar(Pedido pedido);
     Pedido buscarPorId(Integer pedidoId);
 }

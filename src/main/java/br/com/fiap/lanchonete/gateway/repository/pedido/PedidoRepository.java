@@ -1,10 +1,10 @@
 package br.com.fiap.lanchonete.gateway.repository.pedido;
 
 import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
-import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.entity.Pedido;
-import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
+import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.exception.PedidoInexistenteException;
+import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,8 +21,7 @@ public class PedidoRepository implements IPedidoRepository {
 
     @Override
     public List<Pedido> buscarTodos() {
-        final var pedidos = repository.findAll();
-        repository.findAllByStatusInOrderByDataCriacao(List.of(
+        final var pedidos = repository.findByStatusInOrderByDataCriacaoAsc(List.of(
                 new StatusPedidoEntity(StatusEnum.PRONTO),
                 new StatusPedidoEntity(StatusEnum.PREPARANDO),
                 new StatusPedidoEntity(StatusEnum.RECEBIDO)));
@@ -33,6 +32,12 @@ public class PedidoRepository implements IPedidoRepository {
     public Pedido salvar(Pedido pedido) {
         final var pedidoCriado = repository.save(new PedidoEntity(pedido));
         return PedidoAdapter.toPedido(pedidoCriado);
+    }
+
+    @Override
+    public Pedido atualizar(Pedido pedido) {
+        final var pedidoAtualizado = repository.save(PedidoAdapter.toUpdate(pedido));
+        return PedidoAdapter.toPedido(pedidoAtualizado);
     }
 
     @Override
