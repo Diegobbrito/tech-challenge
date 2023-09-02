@@ -2,17 +2,15 @@ package br.com.fiap.lanchonete.gateway.repository.categoria;
 
 import br.com.fiap.lanchonete.gateway.repository.produto.ProdutoEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "categorias")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class CategoriaEntity {
 
