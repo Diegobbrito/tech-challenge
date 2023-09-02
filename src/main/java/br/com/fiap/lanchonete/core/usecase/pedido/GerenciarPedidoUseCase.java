@@ -27,7 +27,7 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
             pedido.setStatus(StatusEnum.RECEBIDO);
         }
 
-        final var entity = pedidoRepository.salvar(pedido);
+        final var entity = pedidoRepository.atualizar(pedido);
         return PedidoAdapter.toResponse(entity);
     }
 
@@ -35,7 +35,7 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
     public PedidoResponse atualizar(Integer pedidoId, PedidoStatusRequest request) {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
         pedido.setStatus(StatusEnum.from(request.getStatusId()));
-        final var entity = pedidoRepository.salvar(pedido);
+        final var entity = pedidoRepository.atualizar(pedido);
         return PedidoAdapter.toResponse(entity);
     }
 
