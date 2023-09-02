@@ -2,16 +2,14 @@ package br.com.fiap.lanchonete.gateway.repository.pedido;
 
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "status_pedido")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class StatusPedidoEntity {
 
