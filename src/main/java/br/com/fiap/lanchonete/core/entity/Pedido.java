@@ -44,7 +44,6 @@ public class Pedido {
     public List<ProdutoSelecionado> getProdutos() {
         return produtos;
     }
-
     public BigDecimal getValor() {
         return valor;
     }

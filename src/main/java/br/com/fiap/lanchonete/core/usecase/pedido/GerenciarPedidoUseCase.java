@@ -3,6 +3,7 @@ package br.com.fiap.lanchonete.core.usecase.pedido;
 import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.PagamentoRequest;
 import br.com.fiap.lanchonete.api.dto.request.PedidoStatusRequest;
+import br.com.fiap.lanchonete.api.dto.response.PagamentoStatusResponse;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.gateway.repository.IPagamentoDataProvider;
@@ -28,7 +29,7 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
         }
 
         final var entity = pedidoRepository.atualizar(pedido);
-        return PedidoAdapter.toResponse(entity);
+        return PedidoAdapter.toResponseUpdate(entity);
     }
 
     @Override
@@ -36,11 +37,14 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
         pedido.setStatus(StatusEnum.from(request.getStatusId()));
         final var entity = pedidoRepository.atualizar(pedido);
-        return PedidoAdapter.toResponse(entity);
+        return PedidoAdapter.toResponseUpdate(entity);
     }
 
     @Override
-    public PedidoResponse consultarStatusDePagamento() {
-        return null;
+    public PagamentoStatusResponse consultarStatusDePagamento(Integer pedidoId) {
+        final var pedido = pedidoRepository.buscarPorId(pedidoId);
+        if(pedido.getStatus().getId().equals(StatusEnum.PAGAMENTOPENDENTE.getId()))
+            return PedidoAdapter.toPedidoStatus("Pagamento Pendente");
+        return PedidoAdapter.toPedidoStatus("Pago");
     }
 }

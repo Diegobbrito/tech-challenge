@@ -1,6 +1,7 @@
 package br.com.fiap.lanchonete.api.adapter;
 
 import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
+import br.com.fiap.lanchonete.api.dto.response.PagamentoStatusResponse;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.api.dto.response.StatusResponse;
 import br.com.fiap.lanchonete.core.entity.*;
@@ -19,10 +20,8 @@ import java.util.stream.Collectors;
 public class PedidoAdapter {
 
     public static Pedido toPedido(PedidoEntity pedidoEntity) {
-
         final var status = new Status(StatusEnum.from(pedidoEntity.getStatus().getId()));
-        final var produtosEntity = pedidoEntity.getProdutos();
-        final var produtos = produtosEntity.stream().map(p ->
+        final var produtos =  pedidoEntity.getProdutos().stream().map(p ->
                 new ProdutoSelecionado(ProdutoAdapter.toProduto(p.getProduto()), p.getQuantidade())
         ).collect(Collectors.toList());
         Cliente cliente = null;
@@ -55,5 +54,14 @@ public class PedidoAdapter {
 
     public static PedidoEntity toUpdate(Pedido pedido) {
         return new PedidoEntity(pedido);
+    }
+
+    public static PedidoResponse toResponseUpdate(Pedido pedido) {
+        final var status = new StatusResponse(pedido.getStatus().getTipo());
+        return new PedidoResponse(pedido.getId(), formatarParaReal(pedido.getValor()), status);
+    }
+
+    public static PagamentoStatusResponse toPedidoStatus(String status) {
+        return new PagamentoStatusResponse(status);
     }
 }

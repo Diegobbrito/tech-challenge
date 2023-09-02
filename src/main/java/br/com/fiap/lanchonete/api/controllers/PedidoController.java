@@ -3,6 +3,7 @@ package br.com.fiap.lanchonete.api.controllers;
 import br.com.fiap.lanchonete.api.dto.request.PagamentoRequest;
 import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
 import br.com.fiap.lanchonete.api.dto.request.PedidoStatusRequest;
+import br.com.fiap.lanchonete.api.dto.response.PagamentoStatusResponse;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.core.usecase.pedido.IBuscarPedido;
 import br.com.fiap.lanchonete.core.usecase.pedido.ICriarPedido;
@@ -37,9 +38,9 @@ public class PedidoController {
     }
 
     @Operation(summary = "Consulta status de pagamento um pedido")
-    @GetMapping("/{pedidoId}")
-    public ResponseEntity<PedidoResponse> detalheDePagamentoDoPedido(){
-        return ResponseEntity.ok(gerenciarPedidoUseCase.consultarStatusDePagamento());
+    @GetMapping("/{pedidoId}/pagamento")
+    public ResponseEntity<PagamentoStatusResponse> detalheDePagamentoDoPedido(@Parameter(example = "1") @PathVariable Integer pedidoId){
+        return ResponseEntity.ok(gerenciarPedidoUseCase.consultarStatusDePagamento(pedidoId));
     }
 
     @Operation(summary = "Criação de  pedidos")
