@@ -3,14 +3,12 @@ package br.com.fiap.lanchonete.gateway.repository.pedido;
 import br.com.fiap.lanchonete.gateway.repository.produto.ProdutoEntity;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "pedido_produto")
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ProdutoPedidoEntity {
 
     @Id
