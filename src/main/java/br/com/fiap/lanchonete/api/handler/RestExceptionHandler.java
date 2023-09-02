@@ -1,11 +1,7 @@
 package br.com.fiap.lanchonete.api.handler;
 
-import br.com.fiap.lanchonete.core.exception.ClienteInexistenteException;
-import br.com.fiap.lanchonete.core.exception.CpfInvalidoException;
-import br.com.fiap.lanchonete.core.exception.EmailInvalidoException;
-import br.com.fiap.lanchonete.core.exception.PedidoInexistenteException;
+import br.com.fiap.lanchonete.core.exception.*;
 import lombok.Getter;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -31,20 +27,24 @@ public class RestExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<ExceptionDetails> handlerCpfInvalidoException(CpfInvalidoException ex){
         final var details = new ExceptionDetails(ex.getMessage());
-        return new ResponseEntity(details, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(details);
     }
 
     @ExceptionHandler
     public ResponseEntity<ExceptionDetails> handlerEmailInvalidoException(EmailInvalidoException ex){
         final var details = new ExceptionDetails(ex.getMessage());
-        return new ResponseEntity(details, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(details);
+    }
+    public ResponseEntity<ExceptionDetails> handlerClienteCadastradoException(ClienteCadastradoException ex){
+        final var details = new ExceptionDetails(ex.getMessage());
+        return ResponseEntity.badRequest().body(details);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<ExceptionDetails> handlerDataIntegrityViolationException(DataIntegrityViolationException ex){
+    public ResponseEntity<ExceptionDetails> handlerPedidoStatusException(PedidoStatusException ex){
         final var details = new ExceptionDetails(ex.getMessage());
-        return new ResponseEntity(details, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().body(details);
     }
+
     @ExceptionHandler
     public ResponseEntity<ExceptionDetails> handlerException(Exception ex){
         final var details = new ExceptionDetails(ex.getMessage());

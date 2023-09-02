@@ -6,6 +6,7 @@ import br.com.fiap.lanchonete.api.dto.request.PedidoStatusRequest;
 import br.com.fiap.lanchonete.api.dto.response.PagamentoStatusResponse;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
+import br.com.fiap.lanchonete.core.exception.PedidoStatusException;
 import br.com.fiap.lanchonete.gateway.repository.IPagamentoDataProvider;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 
@@ -35,6 +36,8 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
     @Override
     public PedidoResponse atualizar(Integer pedidoId, PedidoStatusRequest request) {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
+        if(pedido.getStatus().getId().equals(request.getStatusId()))
+            throw new PedidoStatusException("Pedido já está no status: " + pedido.getStatus().getTipo());
         pedido.setStatus(StatusEnum.from(request.getStatusId()));
         final var entity = pedidoRepository.atualizar(pedido);
         return PedidoAdapter.toResponseUpdate(entity);

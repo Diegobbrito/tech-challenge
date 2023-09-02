@@ -2,8 +2,9 @@ package br.com.fiap.lanchonete.gateway.repository.cliente;
 
 import br.com.fiap.lanchonete.api.adapter.ClienteAdapter;
 import br.com.fiap.lanchonete.core.entity.Cliente;
-import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
+import br.com.fiap.lanchonete.core.exception.ClienteCadastradoException;
 import br.com.fiap.lanchonete.core.exception.ClienteInexistenteException;
+import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class ClienteRepository implements IClienteRepository {
 
     @Override
     public Cliente salvar(Cliente cliente) {
+        final var checkCliente = repository
+                .findByCpf(cliente.getCpf().getValor());
+        if(checkCliente.isPresent()){
+            throw new ClienteCadastradoException("Cliente já cadastrado.");
+        }
         final var clienteEntity = new ClienteEntity(cliente);
         final var entity = repository.save(clienteEntity);
         return ClienteAdapter.toCliente(entity);
