@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: lanchonete-container
-          image: diegobbrito17/lanchonete:1.0.0
+          image: diegobbrito17/lanchonete:1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -32,7 +32,6 @@ spec:
                 secretKeyRef:
                   name: db-secret
                   key: db_user
-            - name: MYSQL_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
