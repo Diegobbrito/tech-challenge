@@ -36,6 +36,7 @@ public class PedidoEntity {
     private LocalDateTime dataCriacao;
 
     @ManyToOne
+    @JoinColumn(name = "status_id")
     private StatusPedidoEntity status;
 
     public PedidoEntity(Pedido pedido) {
