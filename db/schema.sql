@@ -103,5 +103,5 @@ INSERT INTO status_pedido (titulo) VALUES ("Em preparação");
 INSERT INTO status_pedido (titulo) VALUES ("Pronto");
 INSERT INTO status_pedido (titulo) VALUES ("Finalizado");
 
-GRANT ALL PRIVILEGES ON *.* TO 'usuario' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'usuario'@'%' WITH GRANT OPTION;
 flush privileges;

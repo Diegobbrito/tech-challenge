@@ -21,6 +21,31 @@ spec:
           ports:
             - name: http
               containerPort: 8080
-          envFrom:
-            - configMapRef:
-                name: configmap
+          env:
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_database
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_user
+            - name: MYSQL_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_password
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_port
+            - name: MYSQL_USER
+            - name: DB_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_server
