@@ -35,7 +35,7 @@ public class CriarPedidoUseCase implements ICriarPedido {
 
         final var status = new Status(StatusEnum.PAGAMENTOPENDENTE);
         Cliente cliente = null;
-        if(request.getCpf() != null){
+        if(request.getCpf() != null && !request.getCpf().isBlank()){
             final var cpfFormatado = request.getCpf().trim().replaceAll("\\.", "").replaceAll("-", "");
             cliente = this.clienteRepository.buscarClientePorCpf(cpfFormatado);
         }
