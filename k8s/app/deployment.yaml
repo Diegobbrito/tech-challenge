@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: lanchonete-container
-          image: diegobbrito17/lanchonete:1
+          image: diegobbrito17/lanchonete:2.0.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -47,3 +47,21 @@ spec:
                 secretKeyRef:
                   name: db-secret
                   key: db_server
+          livenessProbe:
+            httpGet:
+              path: /lanchonete/actuator/health
+              port: 8080
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /lanchonete/actuator/health
+              port: 8080
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
