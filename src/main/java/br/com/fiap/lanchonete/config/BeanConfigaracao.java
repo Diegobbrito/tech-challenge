@@ -9,8 +9,6 @@ import br.com.fiap.lanchonete.core.usecase.cliente.ICriarCliente;
 import br.com.fiap.lanchonete.core.usecase.pedido.*;
 import br.com.fiap.lanchonete.core.usecase.produto.*;
 import br.com.fiap.lanchonete.gateway.dataprovider.IPagamentoDataProvider;
-import br.com.fiap.lanchonete.gateway.dataprovider.MercadoPagoAPIDataProvider;
-import br.com.fiap.lanchonete.gateway.dataprovider.PagamentoDataProvider;
 import br.com.fiap.lanchonete.gateway.repository.ICategoriaRepository;
 import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
@@ -64,11 +62,6 @@ public class BeanConfigaracao {
     @Bean
     IGerenciarProduto gerenciarProduto(IProdutoRepository repository){
         return new GerenciarProdutoUseCase(repository);
-    }
-
-    @Bean
-    IPagamentoDataProvider pagamento(MercadoPagoAPIDataProvider dataProvider){
-        return new PagamentoDataProvider(dataProvider);
     }
 
 }

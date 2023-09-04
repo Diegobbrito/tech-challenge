@@ -1,7 +1,9 @@
 package br.com.fiap.lanchonete.gateway.dataprovider;
 
 import br.com.fiap.lanchonete.core.entity.Pedido;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MercadoPagoAPIDataProvider{
 
     public String criarPagamento(Pedido entity) {
