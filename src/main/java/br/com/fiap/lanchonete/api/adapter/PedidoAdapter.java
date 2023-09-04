@@ -38,6 +38,10 @@ public class PedidoAdapter {
         response.setQrData(qrData);
         return response;
     }
+    public static PedidoResponse toResponse(Pedido pedido) {
+        final var status = new StatusResponse(pedido.getStatus().getTipo());
+        return  new PedidoResponse(pedido.getId(), formatarParaReal(pedido.getValor()), status);
+    }
     public static Pedido toPedido(PedidoRequest request, Cliente cliente, List<Produto> produtos, Status status) {
         return new Pedido(getProdutosSelecionados(request, produtos), cliente, status);
     }
