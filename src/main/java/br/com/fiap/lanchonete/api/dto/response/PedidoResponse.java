@@ -9,6 +9,7 @@ public class PedidoResponse {
     @Schema(example = "R$ 24,90")
     private String valorTotal;
     private StatusResponse status;
+    private String qrData;
 
     public PedidoResponse(Integer id, String valor, StatusResponse status) {
         this.id = id;
@@ -26,5 +27,13 @@ public class PedidoResponse {
 
     public StatusResponse getStatus() {
         return status;
+    }
+
+    public String getQrData() {
+        return qrData;
+    }
+
+    public void setQrData(String qrData) {
+        this.qrData = qrData;
     }
 }
