@@ -1,5 +1,6 @@
 package br.com.fiap.lanchonete.api.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class PedidoResponse {
@@ -9,6 +10,8 @@ public class PedidoResponse {
     @Schema(example = "R$ 24,90")
     private String valorTotal;
     private StatusResponse status;
+
+    @JsonInclude(value = JsonInclude.Include.NON_NULL)
     private String qrData;
 
     public PedidoResponse(Integer id, String valor, StatusResponse status) {
