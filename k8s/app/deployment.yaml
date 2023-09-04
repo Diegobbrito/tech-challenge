@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: lanchonete-container
-          image: diegobbrito17/lanchonete:2.0.0
+          image: diegobbrito17/lanchonete:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
