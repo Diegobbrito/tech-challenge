@@ -48,8 +48,7 @@ public class ProdutoController {
     @Operation(summary = "Alteração de produto")
     @PutMapping("/produtos/{id}")
     public ResponseEntity<ProdutoResponse> editar(@Parameter(example = "1") @PathVariable Integer id, @RequestBody ProdutoRequest request){
-        gerenciarProdutoUseCase.atualizar(id, request);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(gerenciarProdutoUseCase.atualizar(id, request));
     }
     @Operation(summary = "Deleção de produto")
     @DeleteMapping("/produtos/{id}")
