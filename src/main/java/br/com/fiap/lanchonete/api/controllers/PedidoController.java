@@ -58,6 +58,6 @@ public class PedidoController {
     @Operation(summary = "Atualização do status do  pedido")
     @PatchMapping("/{pedidoId}/atualizar")
     public ResponseEntity<PedidoResponse> atualizar(@Parameter(example = "1") @PathVariable Integer pedidoId, @RequestBody PedidoStatusRequest request){
-        return new ResponseEntity<>(gerenciarPedidoUseCase.atualizar(pedidoId, request), HttpStatus.CREATED) ;
+        return ResponseEntity.ok(gerenciarPedidoUseCase.atualizar(pedidoId, request)) ;
     }
 }
