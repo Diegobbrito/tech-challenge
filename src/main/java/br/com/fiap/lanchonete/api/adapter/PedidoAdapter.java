@@ -32,9 +32,11 @@ public class PedidoAdapter {
        return pedido;
     }
 
-    public static PedidoResponse toResponse(Pedido pedido) {
+    public static PedidoResponse toResponse(Pedido pedido, String qrData) {
         final var status = new StatusResponse(pedido.getStatus().getTipo());
-        return new PedidoResponse(pedido.getId(), formatarParaReal(pedido.getValor()), status);
+        final var response = new PedidoResponse(pedido.getId(), formatarParaReal(pedido.getValor()), status);
+        response.setQrData(qrData);
+        return response;
     }
     public static Pedido toPedido(PedidoRequest request, Cliente cliente, List<Produto> produtos, Status status) {
         return new Pedido(getProdutosSelecionados(request, produtos), cliente, status);

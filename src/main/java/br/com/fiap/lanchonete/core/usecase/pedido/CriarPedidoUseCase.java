@@ -8,6 +8,7 @@ import br.com.fiap.lanchonete.core.entity.Cliente;
 import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.core.entity.Status;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
+import br.com.fiap.lanchonete.gateway.dataprovider.IPagamentoDataProvider;
 import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
@@ -19,11 +20,13 @@ public class CriarPedidoUseCase implements ICriarPedido {
     private final IPedidoRepository pedidoRepository;
     private final IClienteRepository clienteRepository;
     private final IProdutoRepository produtoRepository;
+    private final IPagamentoDataProvider pagamentoDataProvider;
 
-    public CriarPedidoUseCase(IPedidoRepository repository, IClienteRepository clienteRepository, IProdutoRepository produtoRepository) {
+    public CriarPedidoUseCase(IPedidoRepository repository, IClienteRepository clienteRepository, IProdutoRepository produtoRepository, IPagamentoDataProvider pagamentoDataProvider) {
         this.pedidoRepository = repository;
         this.clienteRepository = clienteRepository;
         this.produtoRepository = produtoRepository;
+        this.pagamentoDataProvider = pagamentoDataProvider;
     }
 
     @Override
@@ -43,6 +46,8 @@ public class CriarPedidoUseCase implements ICriarPedido {
 
         final var entity = pedidoRepository.salvar(pedido);
 
-        return PedidoAdapter.toResponse(entity);
+        final var qrData = this.pagamentoDataProvider.criarPagamento(entity);
+
+        return PedidoAdapter.toResponse(entity, qrData);
     }
 }

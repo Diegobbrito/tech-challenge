@@ -7,7 +7,7 @@ import br.com.fiap.lanchonete.api.dto.response.PagamentoStatusResponse;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.exception.PedidoStatusException;
-import br.com.fiap.lanchonete.gateway.repository.IPagamentoDataProvider;
+import br.com.fiap.lanchonete.gateway.dataprovider.IPagamentoDataProvider;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 
 public class GerenciarPedidoUseCase implements IGerenciarPedido {
@@ -21,9 +21,9 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
     }
 
     @Override
-    public PedidoResponse pagar(Integer pedidoId, PagamentoRequest request) {
+    public PedidoResponse validaPagamento(Integer pedidoId, PagamentoRequest request) {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
-        final var checkPagamento = this.pagamentoDataProvider.realizarPagamento(request.getHash());
+        final var checkPagamento = pagamentoDataProvider.validaPagamento(request.getData().getId());
 
         if(checkPagamento){
             pedido.setStatus(StatusEnum.RECEBIDO);

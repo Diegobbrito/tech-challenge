@@ -43,16 +43,16 @@ public class PedidoController {
         return ResponseEntity.ok(gerenciarPedidoUseCase.consultarStatusDePagamento(pedidoId));
     }
 
-    @Operation(summary = "Criação de  pedidos")
+    @Operation(summary = "Criação de pedidos")
     @PostMapping
     public ResponseEntity<PedidoResponse> criar(@RequestBody PedidoRequest request){
         return new ResponseEntity<>(criarPedidoUseCase.criar(request), HttpStatus.CREATED) ;
     }
 
-    @Operation(summary = "Pagamento do  pedido")
+    @Operation(summary = "Recebe dados de que o pagamento do pedido foi realizado")
     @PostMapping("/{pedidoId}/pagamento")
     public ResponseEntity<PedidoResponse> pagamento(@Parameter(example = "1") @PathVariable Integer pedidoId, @RequestBody PagamentoRequest request){
-        return new ResponseEntity<>(gerenciarPedidoUseCase.pagar(pedidoId, request), HttpStatus.CREATED) ;
+        return new ResponseEntity<>(gerenciarPedidoUseCase.validaPagamento(pedidoId, request), HttpStatus.CREATED) ;
     }
 
     @Operation(summary = "Atualização do status do  pedido")

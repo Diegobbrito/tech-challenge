@@ -1,5 +1,9 @@
 package br.com.fiap.lanchonete.gateway.dataprovider;
 
+import br.com.fiap.lanchonete.core.entity.Pedido;
+
 public interface IPagamentoDataProvider {
-    boolean realizarPagamento(String pagamento);
+
+    String criarPagamento(Pedido entity);
+    boolean validaPagamento(String pagamento);
 }
