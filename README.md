@@ -34,7 +34,7 @@ Faça download do projeto e na pasta principal rode o comando no terminal:
    docker-compose --env-file exemplo.env up -d
 ```
 No navegador, abra a pagina do Swagger da aplicação:
-http://localhost:8080/swagger-ui/index.html#/
+http://localhost:8080/lanchonete/swagger-ui/index.html#/
 
 O Swagger está documentado com exemplos de request.
 
