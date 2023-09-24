@@ -2,11 +2,12 @@ package br.com.fiap.lanchonete.core.usecase.produto;
 
 import br.com.fiap.lanchonete.api.adapter.ProdutoAdapter;
 import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
+import br.com.fiap.lanchonete.config.UseCase;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@UseCase
 public class BuscarProdutoUseCase implements IBuscarProduto {
 
     private final IProdutoRepository repository;

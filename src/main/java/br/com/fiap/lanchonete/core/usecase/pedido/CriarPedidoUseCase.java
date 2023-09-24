@@ -4,6 +4,7 @@ import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
 import br.com.fiap.lanchonete.api.dto.request.ProdutoSelecionadoRequest;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
+import br.com.fiap.lanchonete.config.UseCase;
 import br.com.fiap.lanchonete.core.entity.Cliente;
 import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.core.entity.Status;
@@ -14,7 +15,7 @@ import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
 
 import java.util.stream.Collectors;
-
+@UseCase
 public class CriarPedidoUseCase implements ICriarPedido {
 
     private final IPedidoRepository pedidoRepository;

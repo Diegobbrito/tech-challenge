@@ -3,11 +3,12 @@ package br.com.fiap.lanchonete.core.usecase.produto;
 import br.com.fiap.lanchonete.api.adapter.ProdutoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.ProdutoRequest;
 import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
+import br.com.fiap.lanchonete.config.UseCase;
 import br.com.fiap.lanchonete.core.enumerator.CategoriaEnum;
 import br.com.fiap.lanchonete.core.entity.Categoria;
 import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
-
+@UseCase
 public class CriarProdutoUseCase implements ICriarProduto {
 
     private final IProdutoRepository repository;

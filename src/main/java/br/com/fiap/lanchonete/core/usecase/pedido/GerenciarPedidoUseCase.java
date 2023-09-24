@@ -5,11 +5,12 @@ import br.com.fiap.lanchonete.api.dto.request.PagamentoRequest;
 import br.com.fiap.lanchonete.api.dto.request.PedidoStatusRequest;
 import br.com.fiap.lanchonete.api.dto.response.PagamentoStatusResponse;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
+import br.com.fiap.lanchonete.config.UseCase;
 import br.com.fiap.lanchonete.core.enumerator.StatusEnum;
 import br.com.fiap.lanchonete.core.exception.PedidoStatusException;
 import br.com.fiap.lanchonete.gateway.dataprovider.IPagamentoDataProvider;
 import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
-
+@UseCase
 public class GerenciarPedidoUseCase implements IGerenciarPedido {
 
     private final IPedidoRepository pedidoRepository;
