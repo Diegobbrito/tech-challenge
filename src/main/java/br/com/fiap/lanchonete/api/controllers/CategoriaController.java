@@ -12,7 +12,7 @@ import java.util.List;
 @Tag(name = "Categorias", description = "Controle de categorias")
 @RestController
 public class CategoriaController {
-    private IBuscarCategoria useCase;
+    private final IBuscarCategoria useCase;
     public CategoriaController(IBuscarCategoria useCase) {
         this.useCase = useCase;
     }
