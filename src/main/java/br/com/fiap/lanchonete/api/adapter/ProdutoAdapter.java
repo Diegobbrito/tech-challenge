@@ -1,8 +1,6 @@
 package br.com.fiap.lanchonete.api.adapter;
 
-import br.com.fiap.lanchonete.api.dto.request.ProdutoRequest;
 import br.com.fiap.lanchonete.api.dto.response.ProdutoResponse;
-import br.com.fiap.lanchonete.core.entity.Categoria;
 import br.com.fiap.lanchonete.core.entity.Produto;
 import br.com.fiap.lanchonete.gateway.repository.produto.ProdutoEntity;
 
@@ -17,11 +15,6 @@ public class ProdutoAdapter {
         final var produto = new Produto(produtoEntity.getNome(), produtoEntity.getDescricao(), produtoEntity.getValor(), CategoriaAdapter.toCategoria(produtoEntity.getCategoria()), produtoEntity.getImagemUrl());
         produto.setId(produtoEntity.getId());
         return produto;
-    }
-
-    public static Produto toProduto(ProdutoRequest request) {
-        final var categoria = new Categoria(request.getCategoriaId());
-        return new Produto(request.getNome(), request.getDescricao(), request.getValor(), categoria, request.getImagemUrl());
     }
 
     public static ProdutoResponse toResponse(Produto produto) {

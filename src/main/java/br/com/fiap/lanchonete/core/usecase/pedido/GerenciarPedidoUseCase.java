@@ -24,7 +24,7 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
     @Override
     public PedidoResponse validaPagamento(Integer pedidoId, PagamentoRequest request) {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
-        final var checkPagamento = pagamentoDataProvider.validaPagamento(request.getData().getId());
+        final var checkPagamento = pagamentoDataProvider.validaPagamento(request.data().id());
 
         if(checkPagamento){
             pedido.setStatus(StatusEnum.RECEBIDO);
@@ -37,9 +37,9 @@ public class GerenciarPedidoUseCase implements IGerenciarPedido {
     @Override
     public PedidoResponse atualizar(Integer pedidoId, PedidoStatusRequest request) {
         final var pedido = pedidoRepository.buscarPorId(pedidoId);
-        if(pedido.getStatus().getId().equals(request.getStatusId()))
+        if(pedido.getStatus().getId().equals(request.statusId()))
             throw new PedidoStatusException("Pedido já está no status: " + pedido.getStatus().getTipo());
-        pedido.setStatus(StatusEnum.from(request.getStatusId()));
+        pedido.setStatus(StatusEnum.from(request.statusId()));
         final var entity = pedidoRepository.atualizar(pedido);
         return PedidoAdapter.toResponseUpdate(entity);
     }

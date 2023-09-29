@@ -43,7 +43,7 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<ProdutoResponse> criar(@RequestBody ProdutoRequest request){
         final var response = criarProdutoUseCase.criar(request);
-        final var uri = URI.create("/produtos/" + response.getId());
+        final var uri = URI.create("/produtos/" + response.id());
         return ResponseEntity.created(uri).body(response);
     }
 

@@ -34,7 +34,7 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<ClienteResponse> cadastrar(@RequestBody ClienteRequest request){
         final var response = criarClienteUseCase.criar(request);
-        final var uri = URI.create("/clientes/" + response.getCpf());
+        final var uri = URI.create("/clientes/" + response.cpf());
         return ResponseEntity.created(uri).body(response);
     }
 }
