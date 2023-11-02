@@ -1,10 +1,15 @@
 package br.com.fiap.lanchonete.gateway.dataprovider;
 
 import br.com.fiap.lanchonete.core.entity.Pedido;
+import com.mercadopago.client.common.PhoneRequest;
+import com.mercadopago.client.payment.*;
+import com.mercadopago.exceptions.MPApiException;
+import com.mercadopago.exceptions.MPException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MercadoPagoAPIDataProvider{
@@ -61,7 +66,11 @@ public class MercadoPagoAPIDataProvider{
                         .transactionAmount(new BigDecimal("58.8"))
                         .build();
 
-        client.create(createRequest);
+        try {
+            client.create(createRequest);
+        } catch (MPException | MPApiException e) {
+            throw new RuntimeException(e);
+        }
         return "00020101021243650016COM.MERCADOLIBRE02013063638f1192a-5fd1-4180-a180-8bcae3556bc35204000053039865802BR5925IZABEL AAAA DE MELO6007BARUERI62070503***63040B6D";
     }
 
