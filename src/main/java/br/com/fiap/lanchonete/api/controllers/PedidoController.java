@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @Tag(name = "Pedidos", description = "Controle de pedidos")
@@ -46,7 +47,9 @@ public class PedidoController {
     @Operation(summary = "Criação de pedidos")
     @PostMapping
     public ResponseEntity<PedidoResponse> criar(@RequestBody PedidoRequest request){
-        return new ResponseEntity<>(criarPedidoUseCase.criar(request), HttpStatus.CREATED) ;
+        final var response = criarPedidoUseCase.criar(request);
+        final var uri = URI.create("/pedidos/" + response.getId());
+        return ResponseEntity.created(uri).body(response);
     }
 
     @Operation(summary = "Recebe dados de que o pagamento do pedido foi realizado")

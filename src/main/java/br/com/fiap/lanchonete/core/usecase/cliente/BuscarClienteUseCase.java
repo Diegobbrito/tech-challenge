@@ -2,10 +2,11 @@ package br.com.fiap.lanchonete.core.usecase.cliente;
 
 import br.com.fiap.lanchonete.api.adapter.ClienteAdapter;
 import br.com.fiap.lanchonete.api.dto.response.ClienteResponse;
+import br.com.fiap.lanchonete.config.UseCase;
 import br.com.fiap.lanchonete.gateway.repository.IClienteRepository;
 
 import java.util.List;
-
+@UseCase
 public class BuscarClienteUseCase implements IBuscarCliente {
 
     private final IClienteRepository repository;

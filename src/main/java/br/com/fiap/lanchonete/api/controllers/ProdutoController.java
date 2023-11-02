@@ -11,12 +11,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
-
-import static org.springframework.http.HttpStatus.CREATED;
 
 @Tag(name = "Produtos", description = "Controle de produtos")
 @RestController
+@RequestMapping("/produtos")
 public class ProdutoController {
 
     private final IBuscarProduto buscarProdutoUseCase;
@@ -29,29 +29,31 @@ public class ProdutoController {
     }
 
     @Operation(summary = "Listagem de todos os produtos")
-    @GetMapping("/produtos")
+    @GetMapping
     public ResponseEntity<List<ProdutoResponse>> listarTodos(){
         return ResponseEntity.ok(buscarProdutoUseCase.buscarTodos());
     }
 
     @Operation(summary = "Listagem de produtos por categoria")
-    @GetMapping("/produtos/{categoriaId}")
+    @GetMapping("/{categoriaId}")
     public ResponseEntity<List<ProdutoResponse>> listarPorCategoria(@Parameter(example = "1") @PathVariable Integer categoriaId){
         return ResponseEntity.ok(buscarProdutoUseCase.buscarPorCategoria(categoriaId));
     }
     @Operation(summary = "Criação de produto")
-    @PostMapping("/produtos")
+    @PostMapping
     public ResponseEntity<ProdutoResponse> criar(@RequestBody ProdutoRequest request){
-        return new ResponseEntity(criarProdutoUseCase.criar(request), CREATED);
+        final var response = criarProdutoUseCase.criar(request);
+        final var uri = URI.create("/produtos/" + response.id());
+        return ResponseEntity.created(uri).body(response);
     }
 
     @Operation(summary = "Alteração de produto")
-    @PutMapping("/produtos/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> editar(@Parameter(example = "1") @PathVariable Integer id, @RequestBody ProdutoRequest request){
         return ResponseEntity.ok(gerenciarProdutoUseCase.atualizar(id, request));
     }
     @Operation(summary = "Deleção de produto")
-    @DeleteMapping("/produtos/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@Parameter(example = "1") @PathVariable Integer id){
         gerenciarProdutoUseCase.excluirProduto(id);
         return ResponseEntity.noContent().build();

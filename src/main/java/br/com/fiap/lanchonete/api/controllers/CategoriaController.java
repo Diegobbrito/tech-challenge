@@ -12,15 +12,14 @@ import java.util.List;
 @Tag(name = "Categorias", description = "Controle de categorias")
 @RestController
 public class CategoriaController {
-
-    private IBuscarCategoria service;
-    public CategoriaController(IBuscarCategoria service) {
-        this.service = service;
+    private final IBuscarCategoria useCase;
+    public CategoriaController(IBuscarCategoria useCase) {
+        this.useCase = useCase;
     }
 
     @Operation(summary = "Lista todas as categorias com suas descrições")
     @GetMapping("/categorias")
     public ResponseEntity<List<CategoriaResponse>> categorias(){
-       return ResponseEntity.ok(service.buscarTodas());
+       return ResponseEntity.ok(useCase.buscarTodas());
     }
 }
