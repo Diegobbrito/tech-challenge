@@ -1,4 +1,4 @@
-name: Java CI Build and Push Docker Image
+name: Java CI Build and Push Docker Image to DockerHub and ECR
 
 on:
   push:
@@ -46,3 +46,20 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/lanchonete:${{ steps.get_version.outputs.version }}
             ${{ secrets.DOCKER_USERNAME }}/lanchonete:latest
+            
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Build and Push to ECR
+        id: build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            public.ecr.aws/${{ secrets.AWS_KEY_ECR }}/lanchonete:latest
+            public.ecr.aws/${{ secrets.AWS_KEY_ECR }}/lanchonete:${{ steps.get_version.outputs.version }}
