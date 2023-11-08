@@ -25,6 +25,6 @@ jobs:
         id: build-image
         run: |
           # Build a docker container and push it to ECR 
-          docker build -t public.ecr.aws/x7v9e8v3/lanchonete:latest .
+          docker build -t 103199998923.dkr.ecr.us-east-1.amazonaws.com/lanchonete:latest .
           echo "Pushing image to ECR..."
-          docker push public.ecr.aws/x7v9e8v3/lanchonete:latest
+          docker push 103199998923.dkr.ecr.us-east-1.amazonaws.com/lanchonete:latest
