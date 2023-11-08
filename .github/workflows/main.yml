@@ -33,18 +33,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build a docker container and push it to ECR 
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker
+          docker build -t public.ecr.aws/x7v9e8v3/lanchonete:latest .
           echo "Pushing image to ECR..."
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-      - name: Retag the image with "latest"
-        run: |
-          echo "Retagging image..."
-          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:latest" >> $GITHUB_OUTPUT
+          docker push public.ecr.aws/x7v9e8v3/lanchonete:latest .
 
-      - name: Push the image with "latest" tag to ECR
-        run: |
-          echo "Pushing image with latest tag to ECR..."
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
