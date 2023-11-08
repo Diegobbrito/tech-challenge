@@ -15,6 +15,7 @@
 	<description>Tech Challenge Fiap</description>
 	<properties>
 		<java.version>17</java.version>
+		<project.version>2.0.0</project.version>
 	</properties>
 	<dependencies>
 		<dependency>
