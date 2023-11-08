@@ -1,4 +1,4 @@
-name: Java CI Build and Push Docker Image to ECR
+name: Build and Push Docker Image to ECR
 
 on:
   push:
@@ -13,34 +13,27 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      - name: Get version from pom.xml
-        id: get_version
-        run: echo ::set-output name=version::$(mvn -q -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec)
-            
+        
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+          
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and Push to ECR
-        id: build
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: |
-            public.ecr.aws/${{ secrets.AWS_KEY_ECR }}/lanchonete:latest
-            public.ecr.aws/${{ secrets.AWS_KEY_ECR }}/lanchonete:${{ steps.get_version.outputs.version }}
+      - name: Build, tag, and push the image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # Build a docker container and push it to ECR 
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          echo "Pushing image to ECR..."
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
