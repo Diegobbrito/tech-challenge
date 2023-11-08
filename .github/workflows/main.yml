@@ -35,5 +35,4 @@ jobs:
           # Build a docker container and push it to ECR 
           docker build -t public.ecr.aws/x7v9e8v3/lanchonete:latest .
           echo "Pushing image to ECR..."
-          docker push public.ecr.aws/x7v9e8v3/lanchonete:latest .
-
+          docker push public.ecr.aws/x7v9e8v3/lanchonete:latest
