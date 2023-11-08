@@ -4,6 +4,7 @@ import br.com.fiap.lanchonete.api.adapter.PedidoAdapter;
 import br.com.fiap.lanchonete.api.dto.request.PedidoRequest;
 import br.com.fiap.lanchonete.api.dto.request.ProdutoSelecionadoRequest;
 import br.com.fiap.lanchonete.api.dto.response.PedidoResponse;
+import br.com.fiap.lanchonete.config.UseCase;
 import br.com.fiap.lanchonete.core.entity.Cliente;
 import br.com.fiap.lanchonete.core.entity.Pedido;
 import br.com.fiap.lanchonete.core.entity.Status;
@@ -14,7 +15,7 @@ import br.com.fiap.lanchonete.gateway.repository.IPedidoRepository;
 import br.com.fiap.lanchonete.gateway.repository.IProdutoRepository;
 
 import java.util.stream.Collectors;
-
+@UseCase
 public class CriarPedidoUseCase implements ICriarPedido {
 
     private final IPedidoRepository pedidoRepository;
@@ -33,13 +34,13 @@ public class CriarPedidoUseCase implements ICriarPedido {
     public PedidoResponse criar(PedidoRequest request) {
         Pedido pedido;
 
-        final var ids = request.getProdutos().stream().map(ProdutoSelecionadoRequest::getProdutoId).collect(Collectors.toList());
+        final var ids = request.produtos().stream().map(ProdutoSelecionadoRequest::produtoId).collect(Collectors.toList());
         final var produtos = this.produtoRepository.buscarTodosPorIds(ids);
 
         final var status = new Status(StatusEnum.PAGAMENTOPENDENTE);
         Cliente cliente = null;
-        if(request.getCpf() != null && !request.getCpf().isBlank()){
-            final var cpfFormatado = request.getCpf().trim().replaceAll("\\.", "").replaceAll("-", "");
+        if(request.cpf() != null && !request.cpf().isBlank()){
+            final var cpfFormatado = request.cpf().trim().replaceAll("\\.", "").replaceAll("-", "");
             cliente = this.clienteRepository.buscarClientePorCpf(cpfFormatado);
         }
         pedido = PedidoAdapter.toPedido(request, cliente, produtos, status);

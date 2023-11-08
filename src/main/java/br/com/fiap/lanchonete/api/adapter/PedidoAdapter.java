@@ -48,8 +48,8 @@ public class PedidoAdapter {
 
     private static List<ProdutoSelecionado> getProdutosSelecionados(PedidoRequest request, List<Produto> produtos) {
         Map<Integer, Integer> produtoQuantidade = new HashMap<>();
-        request.getProdutos().forEach(p ->
-                produtoQuantidade.put(p.getProdutoId(), p.getQuantidade())
+        request.produtos().forEach(p ->
+                produtoQuantidade.put(p.produtoId(), p.quantidade())
         );
         return produtos.stream().map(p -> new ProdutoSelecionado(p, produtoQuantidade.get(p.getId()))).collect(Collectors.toList());
     }
