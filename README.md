@@ -79,6 +79,9 @@ A aplicação é iniciada com dados de categorias, produtos e status no banco de
 
 **Back-end:** Java, Springboot
 
+Gravamos um video sobre a nossa terceira parte do projeto:
+https://youtu.be/7ogVCdfU1lo
+
 
 ## Autores
 
